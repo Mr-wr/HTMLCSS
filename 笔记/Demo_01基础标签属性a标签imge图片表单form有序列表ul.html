@@ -1,0 +1,203 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-09-28 14:18:13
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-09-29 15:14:15
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        float: left;
+        margin: 0 15px 0 0;
+        font-weight: bolder;
+        font-size: 20px;
+        height: 25px;
+        color: red;
+        line-height: 25px;
+        padding: 0 5px;
+      }
+
+      li:hover {
+        border-radius: 20px;
+        color: white;
+        background-color: red;
+      }
+
+      ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <!-- a标签的三种用法
+        1、超链接
+        2、标锚
+        3、电话、发邮件
+        4、协议限定符（就是可以些js代码）
+  -->
+  <!-- ul通常用于导航栏-->
+  <!-- 表单f -->
+
+  <body>
+    <!-- 超链接 -->
+    <!-- 
+      _blank表示在新的页面中打开该网页；
+
+      _self表示在自身页面中打开该网页；_self是默认值；
+
+      _top也是在自身页面中打开该网页 -->
+    <a id="a_imge" href="http://lorempixel.com/640/480/food" target="_blank">食物</a>
+    <!-- <div><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    </div> -->
+    <!-- 标锚#[id]-->
+    <a href="#a_imge">图片</a>
+    <!-- 电话、发邮件 -->
+    <a href="tel:10086">给10086打电话</a>
+    <a href="mailto:1434687824@qq.com">给1434687824发邮件</a>
+    <!-- 使用js代码 -->
+    <a href="javascript:alert('你刚刚点了我')">点我</a>
+    <!-- ul有序列表 -->
+    <ul>
+      <a href="">
+        <li>dasflkj</li>
+      </a>
+      <a href="">
+        <li>dfsa</li>
+      </a>
+      <a href="">
+        <li>dsalkfj</li>
+      </a>
+      <a href="">
+        <li>dsadsalkfk</li>
+      </a>
+      <!-- role 这个属性只是描述作用 没有什么特殊的用法 -->
+      <li role="button">role="button"</li>
+    </ul>
+    <!-- 图片imge -->
+    <img src="http://lorempixel.com/640/480/fashion" width="30px" height="30px" title="鼠标放上提示" alt="这个是一个提示" />
+    <!-- 表单form action表示要提交给谁-->
+    <form method="GET" action="https://www.baidu.com">
+      <p>用户名:<input type="text" name="user" placeholder="请输入用户名" /></p>
+      <p>密码:<input type="password" name="password" placeholder="请输入密码" /></p>
+      <p>男<input type="radio" name="sex" checked="checked" value="man" /> 女<input type="radio" name="sex" value="nv" /></p>
+      <select name="city">
+        <!-- option中的value有值的话不管不管选的内容是什么发送的数据都是value的 -->
+        <option value="Gulgowskiside">Gulgowskiside</option>
+        <option value="Christyfurt">Christyfurt</option>
+        <option value="Jastport">Jastport</option>
+        <option>Lednermouth</option>
+      </select>
+      <input type="submit" />
+    </form>
+    
+  </body>
+</html>
