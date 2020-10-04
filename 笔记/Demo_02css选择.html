@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-09-29 21:04:16
  * @LastEditors: qi-you
- * @LastEditTime: 2020-09-29 22:33:00
+ * @LastEditTime: 2020-10-04 13:50:12
  * @Descripttion: 
 -->
 <!DOCTYPE html>
@@ -24,7 +24,8 @@
           注:！important是在选择器后面加上
           列如：div{color：green !important;}
         css权重
-          每个有选择方式在浏览器内核中有不一样的数字显示采用256进制储存
+          每个有选择方式在浏览器内核中有不一样的数字显示采用256进制储存（1000，100，1）
+          浏览器在执行选择器的时候会比较权重值，如果一行有多个选择器那么会先相加权重值然后再比较
           注：如果权重值一样（优先级一样），会显示后面的就是先来后到，
           谁在后面，谁（后面的）覆盖前面的——后面的会覆盖前面的
       */
@@ -34,7 +35,11 @@
       /* .cla {
         background-color: green !important;
       } */
-      
+      /* 权重相加 */
+      *i > cla{
+        background-color: blue;
+        
+      }
     </style>
   </head>
   <body>
