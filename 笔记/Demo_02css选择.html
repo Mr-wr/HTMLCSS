@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-09-29 21:04:16
  * @LastEditors: qi-you
- * @LastEditTime: 2020-10-05 07:55:01
+ * @LastEditTime: 2020-10-09 09:33:46
  * @Descripttion: 
 -->
 <!DOCTYPE html>
@@ -29,22 +29,33 @@
           注：如果权重值一样（优先级一样），会显示后面的就是先来后到，
           谁在后面，谁（后面的）覆盖前面的——后面的会覆盖前面的
       */
-      /* #i {
-        background-color: black;
-      } */
-      /* .cla {
-        background-color: green !important;
-      } */
-      /* 权重相加 */
-      *i > cla{
+      /* 选择器 / 权重相加*/
+      /* 并列选择器
+        标签选择器要再前面
+       */
+      .cla > .cl {
+        width: 100px;
+        height: 100px;
         background-color: blue;
       }
+      div > .cl {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+      /* #i > .cl {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      } */
     </style>
   </head>
   <body>
-    <div id="i" class="cla">wdsaklfj</div>
-    <div class="cla"></div>
-    <div class="cl"></div>
-    <div id="i_sty" style="background-color: red"></div>
+    <div id="i" class="cla">
+      wdsaklfj
+      <div class="cla"></div>
+      <div class="cl"></div>
+      <div id="i_sty" style="background-color: red"></div>
+    </div>
   </body>
 </html>
