@@ -1,0 +1,53 @@
+divd {
+  height: 200px;
+  width: 200px;
+  background-color: aqua;
+  /* 
+  设置字体最基本的四个样式
+  字体大小默认16px是根据字体的高来 
+  */
+  font-size: 20px;
+  /* 加粗 */
+  font-weight: bold;
+  /* 斜体 */
+  font-style: italic;
+  /* 样式  */
+  font-style: inherit;
+  /* 给容器加外边框 */
+  border: 20px solid black;
+  /*复合属性 第一位是width的粗细 第二位是设置实心的虚线 第三位是颜色*/
+  font-family: arial;
+  /* 设置字体的方法
+      开发用颜色代码尽量不要直接用red
+      例如：color:#ff4400
+            color:black  x
+      注：如果每两位都是一样可以简化
+      列：ff4400=f40
+  */
+}
+img {
+  border-radius: 10px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.a {
+  /* 文字上下左右居中 */
+  align-items: center;
+  line-height: 85px;
+  /* 样式 */
+  background-color: green;
+  width: 100px;
+  height: 85px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.b {
+  width: 0px;
+  height: 0px;
+  border: 10px solid transparent;
+  border-left-color: green;
+}
+
+/*分组选择器 */

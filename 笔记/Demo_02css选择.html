@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-09-29 21:04:16
  * @LastEditors: qi-you
- * @LastEditTime: 2020-10-09 17:37:52
+ * @LastEditTime: 2020-10-11 19:15:24
  * @Descripttion: 
 -->
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/Demo_02.css" />
+    <link rel="stylesheet" href="./css/Demo.css" />
     <title>Document</title>
     <style>
       /* 
@@ -33,29 +33,20 @@
       /* 并列选择器
         标签选择器要再前面
        */
-      .cla > .cl {
-        width: 100px;
-        height: 100px;
-        background-color: blue;
-      }
-      div > .cl {
-        width: 100px;
-        height: 100px;
-        background-color: red;
-      }
-      /* #i > .cl {
-        width: 100px;
-        height: 100px;
-        background-color: black;
-      } */
     </style>
   </head>
   <body>
-    <div id="i" class="cla">
-      wdsaklfj
-      <div class="cla"></div>
-      <div class="cl"></div>
-      <div id="i_sty" style="background-color: red"></div>
+    <!-- <div id="i" class="cla">
+      最外面 -->
+    <!-- <div class="cla">里面</div>
+    <div class="cl">里面</div>
+    <div id="i_sty">里面</div> -->
+    <div class="content flex">
+      <div class="a">微信对话框Facere dolores nihil. Repellendus eum quaerat. Suscipit et ut. Minus mollitia accusamus unde aut pariatur excepturi distinctio amet molestias.</div>
+      <div class="b"></div>
+      <div class="imge_tou">
+        <img style="height: 100px; width: 100px; " src="http://lorempixel.com/640/480/people" > 
+      </div>
     </div>
   </body>
 </html>

@@ -1,0 +1,42 @@
+#test {
+  /* 单行文本所在文本所占的高度 */
+  line-height: 200px;
+  height: 200px;
+  border: 10px solid red;
+  text-align: center;
+  /* 首行缩进 */
+  text-indent: 2em;
+}
+span {
+  color: rgb(0, 0, 238);
+  text-decoration: underline;
+  /* 光标 */
+  cursor: help;
+}
+span:hover {
+  background-color: red;
+}
+
+#content,
+#content > div {
+  width: 100px;
+  height: 100px;
+}
+
+#content {
+  padding: 80px;
+  background-color: black;
+  border: 80px solid aqua;
+}
+#content > div {
+  left: 0;
+  top: 0;
+  margin: 0;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-color: red;
+}
+body{
+    margin: 0;
+}
