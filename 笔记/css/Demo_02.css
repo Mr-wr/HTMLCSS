@@ -1,23 +1,22 @@
-#i{
-    width: 1000px;
-    height: 100px;
-    background-color: green;
-    border-radius: 50px;
+#i {
+  width: 1000px;
+  height: 100px;
+  background-color: green;
+  border-radius: 50px;
 }
 .cla > .cl {
-    width: 100px;
-    height: 100px;
-    background-color: blue;
-  }
-  div > .cl {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-  }
-  
-  /* #i > .cl {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+}
+div > .cl {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+/* #i > .cl {
     width: 100px;
     height: 100px;
     background-color: black;
   } */
- 

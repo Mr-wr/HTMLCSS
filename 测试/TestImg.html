@@ -5,30 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      body {
+      #menu {
+        overflow: hidden;
+        font: 12px verdana, arial, sans-serif;
+      }
+      #menu,
+      #menu li {
+        list-style: none;
+        padding: 0;
         margin: 0;
       }
-      .content {
-        position: relative;
-        top: 10px;
-        left: 10px;
-        width: 100px;
-        height: 100px;
-        background-color: aqua;
+      #menu li {
+        float: left;
       }
-      .z {
-        position: absolute;
-        background-color: black;
-        top: 10px;
-        left: 10px;
-        width: 50px;
-        height: 50px;
+      #menu li a {
+        display: block;
+        /* 如果是中英文混排的文字，建议用固定宽度
+ width:150px;
+ height:30px;
+ line-height:30px;
+ text-align:center;
+ */
+        padding: 8px 50px;
+        background: #3a4953;
+        color: #fff;
+        text-decoration: none;
+        border-right: 1px solid #000;
+      }
+      #menu li a:hover {
+        background: #146c9c;
+        color: #fff;
+        text-decoration: none;
+        border-right: 1px solid #000;
+      }
+      #menu li a.last {
+        border-right: 0; /* 去掉左侧边框 */
       }
     </style>
   </head>
   <body>
-    <div class="content"></div>
-    <div></div>
-    <div class="z"></div>
+    <div>
+      <ul id="menu">
+        <li><a href="http://www.baidu.com">Baidu.Com</a></li>
+        <li><a href="http://www.Code52.Net">Code52.Net</a></li>
+        <li><a href="http://www.yahoo.com">Yahoo.Com</a></li>
+        <li><a href="http://www.google.com" class="last">Google.Com</a></li>
+        <li><a href="http://www.baidu.com">Baidu.Com</a></li>
+        <li><a href="http://www.Code52.Net">Code52.Net</a></li>
+        <li><a href="http://www.yahoo.com">Yahoo.Com</a></li>
+        <li><a href="http://www.google.com" class="last">Google.Com</a></li>
+        <li><a href="http://www.baidu.com">Baidu.Com</a></li>
+        <li><a href="http://www.Code52.Net">Code52.Net</a></li>
+        <li><a href="http://www.yahoo.com">Yahoo.Com</a></li>
+        <li><a href="http://www.google.com" class="last">Google.Com</a></li>
+      </ul>
+    </div>
   </body>
 </html>
