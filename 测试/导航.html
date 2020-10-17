@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../笔记/css/molde.css" />
+    <style>
+      .li_itme:hover {
+        background-color: red;
+        border-radius: 10px;
+      }
+      ul,
+      li {
+        border: 0px;
+      }
+      ul::after {
+        content: " ";
+        display: block;
+        clear: both;
+      }
+      li {
+        margin-left: 20px;
+      }
+      .wh100px {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="nav">
+      <li class="li_itme"><a href="#">天猫</a></li>
+      <li class="li_itme"><a href="#">淘宝</a></li>
+      <li class="li_itme"><a href="#">百度</a></li>
+    </ul>
+    
+    <div class="wh100px"></div>
+  </body>
+</html>

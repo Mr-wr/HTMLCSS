@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/molde.css" />
+    <style>
+        /* 有一个bugdiv嵌套时儿子的margin-top和父亲的margin一样只有大于父亲的margin-top才能显示出来 */
+      .wh100px {
+        margin-left: 50px;
+        margin-top: 50px;
+        position:absolute;
+      }
+      .content {
+        margin-top: 10px;
+        margin-left: 50px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wh100px bacolrccc">
+      <div class="content" style="background-color: green; width: 50px; height: 50px"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #424242;
+}
+ul,
+li {
+  border: 2px solid black;
+  list-style: none;
+}
+li{
+  float: left;
+}
+a {
+  text-decoration: none;
+}
+.wh100px {
+  width: 100px;
+  height: 100px;
+}
+.bacolrccc {
+  background-color: #ccc;
+}
+.colorred {
+  background-color: red;
+}
