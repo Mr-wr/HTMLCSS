@@ -1,0 +1,12 @@
+a {
+  display: inline-block;
+  text-decoration: none;
+  width: 190px;
+  height: 90px;
+  color: red;
+  border: 1px solid black;
+  background-image: url(./img/dm.jpg);
+  text-indent: 190px;
+  white-space: nowrap;
+  overflow: hidden;
+}

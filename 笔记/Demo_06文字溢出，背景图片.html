@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
     <style>
       /* 单行 */
       p {
@@ -15,9 +14,28 @@
         overflow: hidden; /*溢出隐藏*/
         text-overflow: ellipsis; /*溢出的隐藏*/
       }
+      /*多行 截断 根据line-height来截断*/
+      /* 图片代替文字 */
+      a {
+        display: inline-block;
+        text-decoration: none;
+        width: 143px;
+        height: 0px;
+        padding-top:59px;
+        color: red;
+        /* border: 1px solid black; */
+        background-image: url(https://img.alicdn.com/tfs/TB1_uT8a5ERMeJjSspiXXbZLFXa-143-59.png);
+        
+        /* background-position:; 用来定位图片*/
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      /* 如果网速慢先加载网页 */
     </style>
   </head>
   <body>
     <p>但是JFK几点上课了几分撒旦立刻反击</p>
+    <a href="www.taobao.com">淘宝</a>
   </body>
 </html>
