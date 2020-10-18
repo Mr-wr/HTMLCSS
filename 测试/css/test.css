@@ -1,0 +1,16 @@
+.a {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+}
+.a:hover {
+  border: 5px solid #fcc;
+}
+.a::before {
+  content: "df";
+  display: inline-block;
+  background-color: aqua;
+  width: 90px;
+  height: 90px;
+  border: 2px solid red;
+}
