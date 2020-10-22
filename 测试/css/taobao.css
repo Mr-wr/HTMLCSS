@@ -160,14 +160,14 @@ a:hover {
 .five_left {
   width: 190px;
   height: 522px;
-  border: 1px solid black;
+  border: 1px solid #ff5000;
 }
 .five .top li {
   margin-left: 0px 3px;
   padding: 0 7px;
   float: left;
 }
-.five a {
+.five .top a {
   font-size: 16px;
   line-height: 30px;
   font-weight: 700px;
@@ -178,3 +178,34 @@ a:hover {
 }
 
 /* 第五行 left */
+.five_left ul {
+  list-style: none;
+}
+.five_left li {
+  /* border: 1px solid black; */
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  color: #666;
+}
+.five_left li:hover {
+  background-color: pink;
+}
+.five_left li a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #424242;
+  margin-left: 5px;
+}
+/* 第五行left */
+
+/* 第五行content */
+
+.five_content {
+  margin-left: 10px;
+  margin-top: 10px;
+  float: left;
+  height: 512px;
+  width: 520px;
+  border: 1px solid black;
+}
