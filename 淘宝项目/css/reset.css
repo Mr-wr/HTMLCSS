@@ -77,6 +77,11 @@ a {
 }
 
 /* 自己的 */
+select {
+  outline: none; /*取消选中后的标识*/
+  border: 0px;
+}
+
 .border {
   border: 1px solid black;
 }

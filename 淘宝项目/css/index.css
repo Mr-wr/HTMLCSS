@@ -10,18 +10,18 @@
 li {
   float: left;
 }
-.border li {
+.heard li {
   margin-left: 10px;
 }
 
-.border hr{
+.heard hr{
     margin:20px;
     display: inline;
     width: 1px;
     height: 30px;
 }
 
-.border .mauto {
+.heard .mauto {
   line-height: 35px;
   height: 35px;
 }
