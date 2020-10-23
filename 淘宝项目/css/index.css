@@ -1,0 +1,29 @@
+/* 
+    @import 导入别的样式文件
+    @       用编码
+    @       ·····
+    @       .....
+*/
+@import url(reset.css);
+
+/* 首航头部 */
+li {
+  float: left;
+}
+.border li {
+  margin-left: 10px;
+}
+
+.border hr{
+    margin:20px;
+    display: inline;
+    width: 1px;
+    height: 30px;
+}
+
+.border .mauto {
+  line-height: 35px;
+  height: 35px;
+}
+
+/* 首航头部 */
