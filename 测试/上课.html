@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //   function show() {
+      //     var sum = prompt("郑哥一年帅多少天");
+      //     for (let index = 0; index < sum; index++) {
+      //       document.write("<h4>郑哥好帅</h4>");
+      //     }
+      //     var str = "你好啊啊啊啊士大夫士大夫啊啊啊啊";
+      //     var search = "啊";
+      //     var sum = 0;
+      //     while (str.indexOf(search) != -1) {
+      //       sum++;
+      //       str = str.substring(str.indexOf(search) + 1, str.length);
+      //     }
+      //     document.write(sum);
+      //   }
+      function show() {
+        var shiui = new Date(2020, 10, 11);
+        var time = new Date();
+        var a = shiui - time;
+        document.write(a);
+      }
+      window.setInterval(function () {
+        var shiui = new Date(2020, 10, 11);
+        var time = new Date();
+        var a = shiui - time;
+        a = a / 36000;
+        document.getElementById("date").innerHTML = "双十一倒计时：" + a;
+      }, 1000);
+    </script>
+  </head>
+  <body>
+    <h3 id="date">sadlkfj</h3>
+  </body>
+</html>
