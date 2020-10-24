@@ -58,12 +58,23 @@ a {
 .fl {
   float: left;
 }
-.mtop10 {
+/*像素*/
+.mt10 {
   margin-top: 10px;
 }
-.mright10 {
+.mr10 {
   margin-right: 10px;
 }
+.mr7 {
+  margin-right: 7px;
+}
+.ml7 {
+  margin-left: 7px;
+}
+.mr5 {
+  margin-right: 5px;
+}
+/* 像素 */
 
 .c4 {
   color: #ff4000;
@@ -71,12 +82,13 @@ a {
 .c5 {
   color: #ff5000;
 }
-.mauto {
+.layer {
   width: 1190px;
   margin: 0 auto;
 }
 
 /* 自己的 */
+
 select {
   outline: none; /*取消选中后的标识*/
   border: 0px;
