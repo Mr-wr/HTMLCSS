@@ -51,9 +51,73 @@
   font-size: 12px;
   color: #f22e00;
 }
-#headMessage li.line{
+#headMessage li.line {
   color: #ddd;
   font-size: 1px;
-
 }
 /* 头部信息 */
+
+/* 头部广告 */
+#headad {
+  background: url(../images/TB1B9fjZpY7gK0jSZKzXXaikpXa-1920-100.png);
+}
+
+#headad .item5 {
+  margin-right: 0;
+}
+
+#headad .go {
+  width: 80px;
+  height: 80px;
+  padding: 10px 10px 10px 15px;
+}
+
+#headad li {
+  float: left;
+  width: 209px;
+  height: 75px;
+  margin-right: 10px;
+  padding: 12px 15px 0 15px;
+  box-sizing: border-box;
+}
+
+#headad li h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+#headad li a {
+  color: #fff;
+  box-sizing: border-box;
+}
+#headad li a img {
+  width: 52px;
+  height: 52px;
+}
+#headad li p {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#headad ul {
+  margin-top: 13px;
+}
+#headad li.item1 {
+  background: url(../images/ad.png)no-repeat;
+}
+#headad li.item2 {
+  background: url(../images/ad.png)no-repeat;
+}
+#headad li.item3 {
+  background: url(../images/ad.png)no-repeat;
+}
+#headad li.item4 {
+  background: url(../images/ad.png)no-repeat;
+}
+#headad li.item5 {
+  margin-right: 0px;
+  background: url(../images/ad.png)no-repeat;
+}
+
+/* 头部广告 */
+
+

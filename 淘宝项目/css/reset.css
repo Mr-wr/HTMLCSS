@@ -94,6 +94,19 @@ select {
   border: 0px;
 }
 
+.wh100 {
+  width: 100px;
+  height: 100px;
+}
+.colorgreen{
+  background-color: green;
+}
+.coloryellow{
+  background-color: yellow;
+}
+.colorred{
+  background-color: red;
+}
 .border {
   border: 1px solid black;
 }
