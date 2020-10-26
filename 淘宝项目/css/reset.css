@@ -107,6 +107,9 @@ select {
 .colorred{
   background-color: red;
 }
+.content{
+  margin: 0 auto;
+}
 .border {
   border: 1px solid black;
 }
