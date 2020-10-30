@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var tdarray;
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      @keyframes discolor {
+        0% {
+          background: red;
+        }
+        25% {
+          background: yellow;
+        }
+        50% {
+          background: blue;
+        }
+        100% {
+          background: green;
+        }
+      }
+
+      td {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+      }
+      .red {
+        border-radius: 30px;
+        /* box-shadow: 10px 10px 5px; */
+      }
+      .green {
+        background-color: green;
+        border-radius: 30px;
+      }
+      #start {
+        cursor: pointer;
+        animation: discolor 2s;
+        transition: all 0.5s ease;
+        animation-iteration-count: infinite;
+      }
+      .yellow {
+        border-radius: 30px;
+        background-color: yellow;
+        box-shadow: 0px 0px 5px 10px #ccc;
+      }
+      table {
+        background-color: black;
+      }
+      table td {
+        /* background-color: greenyellow; */
+        border-radius: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <table border="1px" cellspacing="">
+      <tr>
+        <td id="item1" class="item1 item">1</td>
+        <td id="item2" class="item2 item">2</td>
+        <td id="item3" class="item3 item">3</td>
+      </tr>
+      <tr>
+        <td id="item8" class="item8 item">8</td>
+        <td id="start" onclick="run();">神秘大抽奖</td>
+        <td id="item4" class="item4 item">4</td>
+      </tr>
+      <tr>
+        <td id="item7" class="item7 item">7</td>
+        <td id="item6" class="item6 item">6</td>
+        <td id="item5" class="item5 item">5</td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    // 开始按钮样式
+    // var index = 0;
+    // var color = ["red", "yellow", "green"];
+    tdarray = document.getElementsByClassName("item");
+    // var start = document.getElementById("start");
+    // setInterval(() => {
+    //   if (index == 3) {
+    //     index = 0;
+    //   }
+    //   start.classList.remove(color[index == 0 ? 2 : index - 1]);
+    //   start.classList.add(color[index]);
+    //   index = index + 1;
+    // }, 300);
+
+    // 定义变量\
+    var num;
+    var star = 1; //判断是否在转
+    var _index = 0;
+    var size = tdarray.length;
+    var lastTd = null;
+    var itemarray = ["item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8"];
+    var max = size * 5;
+    var speed = 30;
+
+    //动画转动
+    function revolve() {
+      star = 0;
+      setTimeout(() => {
+        if (max > 0) {
+          if (_index == size) _index = 0;
+          if (lastTd) lastTd.classList.remove("yellow");
+          var td = document.getElementById(itemarray[_index++]);
+          td.classList.add("yellow");
+          lastTd = td;
+          max = max - 1;
+
+          // 最后一圈减速度的
+          if (max < 10) {
+            speed = speed + 100;
+          }
+          revolve();
+        } else {
+          if (_index == size) _index = 0;
+          if (lastTd) lastTd.classList.remove("yellow");
+          var td = document.getElementById(itemarray[_index]);
+          td.classList.add("yellow");
+          lastTd = td;
+          // 转完后初始化
+          max = size * 5;
+          _index = 0;
+          speed = 30;
+          star = 1;
+          // 判断是否是一等奖
+          if (num != 0) {
+            setTimeout(run, 2000);
+          }
+        }
+      }, speed);
+    }
+    //开始运行
+    function run() {
+      // 判断是否有在运行
+      if (star == 1) {
+        num = Math.floor(Math.random() * 7);
+        max = max + num;
+        console.log(num);
+
+        // if (star == 1) {
+        revolve();
+        // }
+      }
+    }
+
+    // 概率问题
+  </script>
+</html>
