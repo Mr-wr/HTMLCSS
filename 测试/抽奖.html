@@ -12,19 +12,24 @@
         margin: 0;
         padding: 0;
       }
+      body {
+        background-color: #2c9afc;
+      }
+
       @keyframes discolor {
-        0% {
-          background: red;
-        }
-        25% {
-          background: yellow;
-        }
         50% {
-          background: blue;
+          background: red;
+          box-shadow: 0px 0px 5px 10px #ccc;
         }
         100% {
-          background: green;
+          background: yellow;
         }
+        /* 50% {
+          background: blue;
+        } 
+        100% {
+          background: green;
+        } */
       }
 
       td {
@@ -34,7 +39,6 @@
       }
       .red {
         border-radius: 30px;
-        /* box-shadow: 10px 10px 5px; */
       }
       .green {
         background-color: green;
@@ -52,32 +56,46 @@
         box-shadow: 0px 0px 5px 10px #ccc;
       }
       table {
-        background-color: black;
+        border-radius: 20px;
+        border: 5px solid aqua;
+        padding: 50px;
+        /* background-color: aqua; */
       }
       table td {
         /* background-color: greenyellow; */
         border-radius: 30px;
+        border: 1px solid aqua;
+      }
+      .wrapper {
+        margin: auto;
+        width: 400px;
+        height: 400px;
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <table border="1px" cellspacing="">
-      <tr>
-        <td id="item1" class="item1 item">1</td>
-        <td id="item2" class="item2 item">2</td>
-        <td id="item3" class="item3 item">3</td>
-      </tr>
-      <tr>
-        <td id="item8" class="item8 item">8</td>
-        <td id="start" onclick="run();">神秘大抽奖</td>
-        <td id="item4" class="item4 item">4</td>
-      </tr>
-      <tr>
-        <td id="item7" class="item7 item">7</td>
-        <td id="item6" class="item6 item">6</td>
-        <td id="item5" class="item5 item">5</td>
-      </tr>
-    </table>
+    <div class="wrapper">
+      <h1>神秘大抽奖</h1>
+      <!-- frame="void"消除外边框 -->
+      <table border="1px" cellspacing="">
+        <tr>
+          <td id="item1" class="item1 item">一等奖</td>
+          <td id="item2" class="item2 item">二等奖</td>
+          <td id="item3" class="item3 item">三等奖</td>
+        </tr>
+        <tr>
+          <td id="item8" class="item8 item">谢谢惠顾</td>
+          <td id="start" onclick="run();"><h1>GO</h1></td>
+          <td id="item4" class="item4 item">四等奖</td>
+        </tr>
+        <tr>
+          <td id="item7" class="item7 item">神秘大礼包</td>
+          <td id="item6" class="item6 item">六等奖</td>
+          <td id="item5" class="item5 item">五等奖</td>
+        </tr>
+      </table>
+    </div>
   </body>
   <script>
     // 开始按钮样式
@@ -103,7 +121,8 @@
     var itemarray = ["item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8"];
     var max = size * 5;
     var speed = 30;
-
+    var prizecollection = [];
+    var prize;
     //动画转动
     function revolve() {
       star = 0;
@@ -134,7 +153,7 @@
           star = 1;
           // 判断是否是一等奖
           if (num != 0) {
-            setTimeout(run, 2000);
+            setTimeout(run, 3000);
           }
         }
       }, speed);
@@ -144,12 +163,12 @@
       // 判断是否有在运行
       if (star == 1) {
         num = Math.floor(Math.random() * 7);
+        prize = document.getElementById(itemarray[num]).textContent;
+        console.log(prize);
+        prizecollection.push(num);
         max = max + num;
-        console.log(num);
-
-        // if (star == 1) {
+        // console.log(num);
         revolve();
-        // }
       }
     }
 
