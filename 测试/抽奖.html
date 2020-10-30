@@ -1,3 +1,11 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-10-30 16:22:51
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-10-30 23:07:15
+ * @Descripttion: js实现概率抽奖 点击GO开始顺时针旋转抽奖，没有抽到一等奖过三秒后继续抽奖直到抽中一等奖后停止
+ 注：设置概率在119行左右
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,23 +24,26 @@
       body {
         background-color: #2c9afc;
       }
+      /* 动画变色效果 */
 
-      @keyframes discolor {
+      @keyframes pinwheel {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes discolortable {
         50% {
-          background: red;
           box-shadow: 0px 0px 5px 10px #ccc;
         }
         100% {
-          background: yellow;
         }
-        /* 50% {
-          background: blue;
-        } 
-        100% {
-          background: green;
-        } */
       }
-
+      .transition2s {
+        transition: all 1s ease;
+      }
       td {
         width: 100px;
         height: 100px;
@@ -45,21 +56,34 @@
         background-color: green;
         border-radius: 30px;
       }
-      #start {
+      /* 开始按钮 */
+      #start:hover {
+        /*鼠标样式*/
         cursor: pointer;
-        animation: discolor 2s;
-        transition: all 0.5s ease;
+        animation: pinwheel 1s;
         animation-iteration-count: infinite;
+        /* transform: rotate(100deg); */
+        /*动画效果配置*/
+        transition: all 0.9s ease;
+        background-color: #fff;
+        box-shadow: 0px 0px 5px 10px #000; /*设置阴影*/
+      }
+      #start {
+        background-color: aquamarine;
       }
       .yellow {
         border-radius: 30px;
-        background-color: yellow;
-        box-shadow: 0px 0px 5px 10px #ccc;
+        background-color: #fff;
+        box-shadow: 0px 0px 5px 10px #ccc; /*设置阴影*/
       }
       table {
+        margin-top: 50px;
         border-radius: 20px;
         border: 5px solid aqua;
         padding: 50px;
+        animation: discolortable 2s; /*动画效果配置*/
+        transition: all 0.5s ease; /*动画效果配置*/
+        animation-iteration-count: infinite; /*动画效果配置不断循环动画*/
         /* background-color: aqua; */
       }
       table td {
@@ -77,7 +101,6 @@
   </head>
   <body>
     <div class="wrapper">
-      <h1>神秘大抽奖</h1>
       <!-- frame="void"消除外边框 -->
       <table border="1px" cellspacing="">
         <tr>
@@ -86,7 +109,7 @@
           <td id="item3" class="item3 item">三等奖</td>
         </tr>
         <tr>
-          <td id="item8" class="item8 item">谢谢惠顾</td>
+          <td id="item8" class="item8 item">再来一次</td>
           <td id="start" onclick="run();"><h1>GO</h1></td>
           <td id="item4" class="item4 item">四等奖</td>
         </tr>
@@ -96,10 +119,12 @@
           <td id="item5" class="item5 item">五等奖</td>
         </tr>
       </table>
+      <h1 id="h1"></h1>
     </div>
   </body>
   <script>
     tdarray = document.getElementsByClassName("item");
+    var h1 = document.getElementById("h1");
     //概率
     // 0:一等奖
     // 1：二等
@@ -108,12 +133,12 @@
       min: 0,
       max: 8,
       fenpei: new Map([
-        [0, 0.01], // 一等奖的概率为 1%
-        [7, 0.75], //谢谢惠顾的概率为75%
+        [0, 0.1], // 一等奖的概率为 1%
+        [7, 0.5], //谢谢惠顾的概率为75%
       ]),
     });
     // 定义变量
-    var num;
+    var num; //奖品索引
     var running = 1; //判断是否在转
     var _index = 0;
     var size = tdarray.length;
@@ -123,22 +148,33 @@
     var speed = 30;
     var prizecollection = [];
     var prize;
-    //动画转动
+
+    /**
+     * @description: 动画转动
+     * @param {*}
+     * @return {*}
+     */
     function pinwheel() {
       running = 0;
       setTimeout(() => {
         if (total > 0) {
           if (_index == size) _index = 0;
-          if (lastTd) lastTd.classList.remove("yellow");
+          if (lastTd) {
+            lastTd.classList.remove("yellow");
+            lastTd.classList.remove("transition2s");
+          }
           var td = document.getElementById(itemarray[_index++]);
           td.classList.add("yellow");
           lastTd = td;
-          // 转的次数
+          // 显示的次数
           total = total - 1;
-
           // 最后一圈减速度的
           if (total < 10) {
             speed = speed + 150;
+          }
+          //过渡动画
+          if (total < 9) {
+            td.classList.add("transition2s");
           }
           pinwheel();
         } else {
@@ -157,6 +193,11 @@
           if (num != 0) {
             setTimeout(run, 3000);
           }
+          if (prize == "再来一次") {
+            h1.textContent = "很遗憾" + prize;
+          } else {
+            h1.textContent = "恭喜获得" + prize;
+          }
         }
       }, speed);
     }
@@ -164,16 +205,18 @@
     function run() {
       // 判断是否有在旋转
       if (running == 1) {
+        // 清除h1文字
+        h1.textContent = "";
+        // 概率生成
         num = gl.random();
+        //获取抽到的奖
         prize = document.getElementById(itemarray[num]).textContent;
-        console.log(prize);
+        // console.log(prize);
         prizecollection.push(num);
         total = total + num;
         // console.log(num);
         pinwheel();
       }
     }
-
-    // 概率问题
   </script>
 </html>
