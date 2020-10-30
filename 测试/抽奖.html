@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="./js/index.js"></script>
     <script>
       var tdarray;
     </script>
@@ -98,59 +99,60 @@
     </div>
   </body>
   <script>
-    // 开始按钮样式
-    // var index = 0;
-    // var color = ["red", "yellow", "green"];
     tdarray = document.getElementsByClassName("item");
-    // var start = document.getElementById("start");
-    // setInterval(() => {
-    //   if (index == 3) {
-    //     index = 0;
-    //   }
-    //   start.classList.remove(color[index == 0 ? 2 : index - 1]);
-    //   start.classList.add(color[index]);
-    //   index = index + 1;
-    // }, 300);
-
-    // 定义变量\
+    //概率
+    // 0:一等奖
+    // 1：二等
+    // 2：三等。。。。。
+    let gl = new GL({
+      min: 0,
+      max: 8,
+      fenpei: new Map([
+        [0, 0.01], // 一等奖的概率为 1%
+        [7, 0.75], //谢谢惠顾的概率为75%
+      ]),
+    });
+    // 定义变量
     var num;
-    var star = 1; //判断是否在转
+    var running = 1; //判断是否在转
     var _index = 0;
     var size = tdarray.length;
     var lastTd = null;
     var itemarray = ["item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8"];
-    var max = size * 5;
+    var total = size * 5;
     var speed = 30;
     var prizecollection = [];
     var prize;
     //动画转动
-    function revolve() {
-      star = 0;
+    function pinwheel() {
+      running = 0;
       setTimeout(() => {
-        if (max > 0) {
+        if (total > 0) {
           if (_index == size) _index = 0;
           if (lastTd) lastTd.classList.remove("yellow");
           var td = document.getElementById(itemarray[_index++]);
           td.classList.add("yellow");
           lastTd = td;
-          max = max - 1;
+          // 转的次数
+          total = total - 1;
 
           // 最后一圈减速度的
-          if (max < 10) {
-            speed = speed + 100;
+          if (total < 10) {
+            speed = speed + 150;
           }
-          revolve();
+          pinwheel();
         } else {
           if (_index == size) _index = 0;
           if (lastTd) lastTd.classList.remove("yellow");
           var td = document.getElementById(itemarray[_index]);
           td.classList.add("yellow");
           lastTd = td;
+          //装盘结束
           // 转完后初始化
-          max = size * 5;
+          total = size * 5;
           _index = 0;
           speed = 30;
-          star = 1;
+          running = 1;
           // 判断是否是一等奖
           if (num != 0) {
             setTimeout(run, 3000);
@@ -160,15 +162,15 @@
     }
     //开始运行
     function run() {
-      // 判断是否有在运行
-      if (star == 1) {
-        num = Math.floor(Math.random() * 7);
+      // 判断是否有在旋转
+      if (running == 1) {
+        num = gl.random();
         prize = document.getElementById(itemarray[num]).textContent;
         console.log(prize);
         prizecollection.push(num);
-        max = max + num;
+        total = total + num;
         // console.log(num);
-        revolve();
+        pinwheel();
       }
     }
 
