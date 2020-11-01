@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: black;
+      }
+      div.content {
+        /* 参数详解
+        //如果不写inset默认是外阴影
+        第一个是往右边偏移的
+        第二是上下便宜
+        第三个是模糊度大0到小1
+        第四个是阴影大小
+         */
+        width: 50px;
+        margin-top: 50px;
+        height: 30px;
+        box-shadow: 0px 0px 1px 2px #ccc, 2px 0px 1px 2px red, -2px 0px 1px 2px rgb(0, 162, 255);
+        border-radius: 5px;
+        text-align: center;
+        line-height: 24px;
+        font-size: 30px;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wh100 content">+</div>
+  </body>
+</html>
