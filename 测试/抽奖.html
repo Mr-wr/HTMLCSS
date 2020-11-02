@@ -2,9 +2,9 @@
  * @Author: qi-you
  * @Date: 2020-10-30 16:22:51
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-01 22:03:51
+ * @LastEditTime: 2020-11-02 17:40:10
  * @Descripttion: js实现概率抽奖 点击GO开始顺时针旋转抽奖，没有抽到一等奖过三秒后继续抽奖直到抽中一等奖后停止
- 注：设置概率在119行左右
+ 注：设置概率在216行左右
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +12,55 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./js/index.js"></script>
+    <!-- <script src="./js/index.js"></script> -->
+    <!-- 概率js类 -->
     <script>
+      class GL {
+        /**
+         * 构造函数
+         * @param {object} opt
+         * @param {number} opt.min 最小整数值
+         * @param {number} opt.max 最大整数值
+         * @param {Map} opt.fenpei 自定义概率
+         */
+        constructor({ min, max, fenpei = new Map() }) {
+          this.min = min;
+          this.max = max;
+          this.fenpei = fenpei;
+        }
+
+        /**
+         * 可分配百分比
+         */
+        get baifenbi() {
+          return (1 - this.peizhi) / (this.max - this.min - this.fenpei.size);
+        }
+
+        /**
+         * 匹配百分比
+         */
+        get peizhi() {
+          let result = 0;
+          for (let i of this.fenpei.values()) {
+            if (0 < i && i < 1) result += i;
+          }
+          return result;
+        }
+
+        /**
+         * 随机数
+         * @returns {number} [min,max)
+         */
+        random() {
+          let t = 0,
+            r = Math.random();
+          for (let i = this.min; i < this.max; i++) {
+            this.fenpei.has(i) ? (t += this.fenpei.get(i)) : (t += this.baifenbi);
+            if (t > r) return i;
+          }
+          return null;
+        }
+      }
       var tdarray;
     </script>
     <style>
@@ -48,6 +95,11 @@
         background-color: green;
         border-radius: 30px;
       }
+      /* 清楚文字 */
+      .item {
+        text-indent: -9999px;
+      }
+
       /* 开始按钮 */
       #start:hover {
         /*鼠标样式*/
@@ -92,6 +144,38 @@
         width: 400px;
         height: 400px;
         text-align: center;
+      }
+      .item1 {
+        background-image: url(./img/zero.webp);
+        background-size: 100% 100%;
+      }
+      .item2 {
+        background-image: url(./img/one.webp);
+        background-size: 100% 100%;
+      }
+      .item3 {
+        background-image: url(./img/two.webp);
+        background-size: 100% 100%;
+      }
+      .item4 {
+        background-image: url(./img/three.webp);
+        background-size: 100% 100%;
+      }
+      .item5 {
+        background-image: url(./img/four.webp);
+        background-size: 100% 100%;
+      }
+      .item6 {
+        background-image: url(./img/five.webp);
+        background-size: 100% 100%;
+      }
+      .item7 {
+        background-image: url(./img/six.webp);
+        background-size: 100% 100%;
+      }
+      .item8 {
+        background-image: url(./img/gain.jpg);
+        background-size: 100% 100%;
       }
     </style>
   </head>
