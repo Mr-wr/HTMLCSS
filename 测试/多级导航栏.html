@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        color: #000;
+        text-decoration: none;
+      }
+      ul li {
+        width: 120px;
+        float: left;
+      }
+      ul li ul {
+        display: none;
+      }
+
+      .wrapper ul li:hover ul {
+        display: block;
+        width: 120px;
+        height: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <ul>
+        <li>
+          <a href="">首页</a>
+          <ul>
+            <li><a href="">最新更细</a></li>
+            <li><a href="">下载排行</a></li>
+            <li><a href="">企业新闻</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="">企业新闻</a>
+          <ul>
+            <li><a href="">企业动态</a></li>
+            <li><a href="">最新动态</a></li>
+            <li><a href="">动态</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="">产品信息</a>
+          <ul>
+            <li><a href="">最新产品</a></li>
+            <li><a href="">产品列表</a></li>
+            <li><a href="">数量</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="">特价销售</a>
+          <ul>
+            <li><a href="">出售</a></li>
+            <li><a href="">最新推荐</a></li>
+            <li><a href="">产品列表</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="">联系我们</a>
+          <ul>
+            <li><a href="">公司信息</a></li>
+            <li><a href="">联系我们</a></li>
+            <li><a href="">公司地图</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="">新手论坛</a>
+          <ul>
+            <li><a href="">你问我答</a></li>
+            <li><a href="">网站</a></li>
+            <li><a href="">论坛</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

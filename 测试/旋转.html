@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../淘宝项目/css/reset.css" />
+    <style>
+      #xuanzhun {
+        animation: rotate 2s linear infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(-359deg);
+        }
+      }
+      .layer {
+        width: 0px;
+        height: 0px;
+        margin-top: 100px;
+        border: 100px solid black;
+        border-top-color: green;
+        border-right-color: red;
+        border-left-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="xuanzhun" class="coloryellow layer"></div>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+a {
+  display: inline-block;
+  text-decoration: none;
+  width: 143px;
+  height: 0px;
+  padding-top: 59px;
+  color: red;
+  border: 1px solid black;
+  background-image: url(C:\Users\99260\Documents\GitHub\HTMLCSS\笔记\img\log.png);
+  background-size: 100% 100%;
+  /* background-position:; 用来定位图片 */
+  white-space: nowrap;
+  overflow: hidden;
+}

@@ -9,58 +9,45 @@
         margin: 0;
         padding: 0;
       }
-      .flex {
-        display: flex;
+      .a .wrapper {
+        width: 1000px;
+        height: 100px;
+        margin: 0 auto;
+        /* border: 1px solid black; */
+        /* border-right: 0px; */
       }
-      .content100px {
+      .wrapper .content {
+        position: absolute;
+        /* float: right; */
+        display: inline-block;
+        font-weight: bolder;
+        font-size: 20px;
+        letter-spacing: 1em;
+        color: #fff;
+        text-align: center;
+        line-height: 100px;
         width: 100px;
         height: 100px;
+        background-color: red;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        /* top: 0;
+        right: 0; */
       }
-      .zindex1 {
-        z-index: 1;
-      }
-      .absolute {
-        position: absolute;
-      }
-      .relative {
-        position: relative;
-      }
-      .center {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%); /*rotate(45deg); 在不知道宽高的情况下居中*/
-      }
-      .border10 {
-        border: 10px solid;
-      }
-      .border_raido {
-        border-radius: 50%;
-      }
-      .backcolorred {
-        border-color: red;
-      }
-      .backcolorccc {
-        background-color: #ccc;
-      }
-      .flexcenter {
-        justify-content: center;
-      }
-      .absolutetop10px {
-        top: 3px;
+      .wrapper input {
+        width: calc(100% - 100px);
+        height: 100px;
+        border: 2px solid red;
+        box-sizing: border-box;
+        /* border-right: 0px; */
       }
     </style>
   </head>
   <body>
-    <div class="center backcolorccc">
-      <div class="flex">
-        <div class="border_raido content100px border10 backcolorred"></div>
-        <div class="border_raido content100px border10 backcolorred"></div>
-        <div class="border_raido content100px border10 backcolorred"></div>
-      </div>
-      <div class="flex relative flexcenter">
-        <div class="border_raido content100px border10 backcolorred"></div>
-        <div class="border_raido content100px border10 backcolorred"></div>
+    <div class="a">
+      <div class="wrapper">
+        <input type="text" />
+        <div class="content">搜索</div>
       </div>
     </div>
   </body>

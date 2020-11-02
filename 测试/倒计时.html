@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //   function show() {
+      //     var sum = prompt("郑哥一年帅多少天");
+      //     for (let index = 0; index < sum; index++) {
+      //       document.write("<h4>郑哥好帅</h4>");
+      //     }
+      //     var str = "你好啊啊啊啊士大夫士大夫啊啊啊啊";
+      //     var search = "啊";
+      //     var sum = 0;
+      //     while (str.indexOf(search) != -1) {
+      //       sum++;
+      //       str = str.substring(str.indexOf(search) + 1, str.length);
+      //     }
+      //     document.write(sum);
+      //   }
+    </script>
+    <script src="./js/倒计时.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrapper {
+        width: 900px;
+        margin: 10px auto;
+        display: flex;
+      }
+      h3 {
+        /* border: 1px solid black; */
+        margin-left: 10px;
+        width: 410px;
+        /* align-items: center; */
+        /* line-height: 62px; */
+        /* margin: 0 auto;
+        margin-top: 20%; */
+      }
+      .shang {
+        height: 1px;
+        border: 15px solid transparent;
+        border-top-color: orange;
+        border-bottom-color: orange;
+        /* border-right: 1px solid black; */
+      }
+      .border {
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+      }
+
+      /* css旋转使用属性transform：rotateX(5deg),rotateY(5deg),rotateZ(5deg)，
+      元素可以绕不同的坐标轴旋转，即X、Y、Z。 */
+
+      #xuanzhun {
+        -webkit-transition-property: -webkit-transform;
+        -webkit-transition-duration: 1s;
+        -moz-transition-property: -moz-transform;
+        -moz-transition-duration: 1s;
+        -webkit-animation: rotate 3s linear infinite;
+        -moz-animation: rotate 3s linear infinite;
+        -o-animation: rotate 3s linear infinite;
+        animation: rotate 3s linear infinite;
+      }
+      @-webkit-keyframes rotate {
+        from {
+          -webkit-transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+      @-moz-keyframes rotate {
+        from {
+          -moz-transform: rotate(0deg);
+        }
+        to {
+          -moz-transform: rotate(359deg);
+        }
+      }
+      @-o-keyframes rotate {
+        from {
+          -o-transform: rotate(0deg);
+        }
+        to {
+          -o-transform: rotate(359deg);
+        }
+      }
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(359deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="xuanzhun" class="border">
+        <div id="" class="shang"></div>
+      </div>
+      <h3 id="date">双十一倒计时：</h3>
+    </div>
+  </body>
+</html>

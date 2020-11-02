@@ -89,25 +89,33 @@ a {
 
 /* 自己的 */
 
+input{
+  outline: none;
+}
 select {
   outline: none; /*取消选中后的标识*/
   border: 0px;
+}
+.clearbe::before {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .wh100 {
   width: 100px;
   height: 100px;
 }
-.colorgreen{
+.colorgreen {
   background-color: green;
 }
-.coloryellow{
+.coloryellow {
   background-color: yellow;
 }
-.colorred{
+.colorred {
   background-color: red;
 }
-.content{
+.content {
   margin: 0 auto;
 }
 .border {
