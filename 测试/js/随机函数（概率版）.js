@@ -46,5 +46,13 @@ class GL {
     return null;
   }
 }
+// let gl = new GL({
+//   min: 0,
+//   max: 8,
+//   fenpei: new Map([
+//     [0, 0.1], // 设置1的概率为 1%
+//     [7, 0.5], //设置7的概率为50%
+//   ]),
+// });
 // export default GL;
 //module.exports = GL;
