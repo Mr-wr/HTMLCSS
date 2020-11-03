@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-10-30 16:22:51
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-02 17:40:10
+ * @LastEditTime: 2020-11-02 18:29:52
  * @Descripttion: js实现概率抽奖 点击GO开始顺时针旋转抽奖，没有抽到一等奖过三秒后继续抽奖直到抽中一等奖后停止
  注：设置概率在216行左右
 -->
@@ -105,14 +105,13 @@
         /*鼠标样式*/
         cursor: pointer;
         transform: rotate(360deg);
-        animation-iteration-count: infinite; /*不停止旋转*/
-
+        /*animation-iteration-count: infinite; 不停止旋转*/
         /*动画效果配置*/
-        transition: all 0.9s ease;
         background-color: #fff;
       }
       #start {
-        transition: transform 2s;
+        /* 动画效果 */
+        transition: all 1s ease;
         background-color: aquamarine;
       }
       .yellow {
@@ -132,12 +131,12 @@
       table td {
         border-radius: 30px;
         border: 1px solid aqua;
+        transition: all 0.4s ease;
       }
       /* td选中样式 */
       table td:hover {
         cursor: pointer;
         box-shadow: 0px 0px 15px 10px #ccc; /*设置阴影*/
-        transition: all 0.4s ease;
       }
       .wrapper {
         margin: auto;
@@ -145,6 +144,7 @@
         height: 400px;
         text-align: center;
       }
+      /* 设置奖品图片 */
       .item1 {
         background-image: url(./img/zero.webp);
         background-size: 100% 100%;
@@ -177,6 +177,7 @@
         background-image: url(./img/gain.jpg);
         background-size: 100% 100%;
       }
+      /* 设置奖品图片 */
     </style>
   </head>
   <body>
