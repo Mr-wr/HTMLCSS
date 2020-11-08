@@ -89,7 +89,7 @@ a {
 
 /* 自己的 */
 
-input{
+input {
   outline: none;
 }
 select {
@@ -120,5 +120,11 @@ select {
 }
 .border {
   border: 1px solid black;
+}
+.w50 {
+  width: 50px;
+}
+.h50 {
+  height: 50px;
 }
 /* 自己的 */

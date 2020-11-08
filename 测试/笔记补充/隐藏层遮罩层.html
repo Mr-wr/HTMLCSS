@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <style>
+      .por {
+        width: 160px;
+        height: 160px;
+      }
+      .colorgreen {
+        display: none;
+        top: 0;
+        width: 160px;
+        height: 160px;
+        background: rgb(0, 0, 0, 0.3);
+      }
+      .por:hover .poabs,
+      .coloryellow {
+        display: block;
+      }
+      .coloryellow {
+        display: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="border h50 content"></div>
+    <div class="border wh100 content por">
+      <img src="./img/one.webp" alt="" />
+      <div class="border poabs wh100 colorgreen"></div>
+      <div class="w50 h50 coloryellow poabs"></div>
+    </div>
+  </body>
+</html>

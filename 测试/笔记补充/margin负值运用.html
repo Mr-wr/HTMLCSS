@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <style>
+      .wrapper {
+        /* 然后取消大盒子右下的边框 */
+        margin: 10px;
+        width: 303px;
+        height: 300px;
+        border-right: 0px;
+        border-bottom: 0px;
+      }
+      .wrapper > div {
+        /* 相当取消于左上的边框 */
+        margin-top: -1px;
+        margin-left: -1px;
+        float: left;
+      }
+      /* 但是要显示边框的时候会有一边的边框被压住了 */
+      .wrapper > div:hover {
+        /* 1、使用相对定位让他变层级就会显示出来
+        2、如果div还有定位的话就可以使用z-index提高他们的层级 */
+        position: relative;
+        /* z-index: 1; */
+        border: 1px solid aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper border">
+      <div class="border wh100"></div>
+      <div class="border wh100"></div>
+      <div class="border wh100"></div>
+      <div class="border wh100"></div>
+      <div class="border wh100"></div>
+      <div class="border wh100"></div>
+      <div class="border wh100"></div>
+      <div class="border wh100"></div>
+      <div class="border wh100"></div>
+    </div>
+  </body>
+</html>

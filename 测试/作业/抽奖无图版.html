@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="h1"></h1>
+    <button onclick="stop()">抽奖</button>
+  </body>
+  <script>
+    var index = 0;
+    var invar;
+    // 开局执行
+    re();
+    // 不停的换图片
+    function re() {
+      invar = setInterval(() => {
+        // 如果索引大于六就从新开始
+        if (index == 6) index = 0;
+        // 设置显示文本
+        document.getElementById("h1").innerHTML = index++ + "等奖";
+      }, 100);
+    }
+    //鼠标点击停止执行
+    function stop() {
+      //停止循环
+      clearInterval(invar);
+      //三目运算 当等于一等奖的的时候停止，不是一等奖就等两秒继续执行
+      //因为index++所以才判断index==2
+      index == 2
+        ? 0
+        : setTimeout(() => {
+            re();
+          }, 2000);
+    }
+  </script>
+</html>

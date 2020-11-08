@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="a()"></button>
+    <h1 id="h1"></h1>
+    <img src="./img/timg.jpg" alt="" />
+    <script>
+      function a() {
+        setTimeout(() => {
+          var c = random(1, 7);
+          document.getElementById("h1").innerHTML = "抽中" + c + "等奖<br>1秒后继续抽奖";
+          if (c != 1) {
+            a();
+          } else {
+            document.getElementById("h1").innerHTML = "抽中" + c + "等奖";
+            return;
+          }
+        }, 1000);
+      }
+      function random(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+    </script>
+  </body>
+</html>

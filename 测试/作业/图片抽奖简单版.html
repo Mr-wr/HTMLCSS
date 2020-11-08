@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="" alt="" />
+    <button onclick="stop()">暂停</button>
+    <h1 id="h1"></h1>
+  </body>
+  <script>
+    var index=0;
+    var invar;
+    re();
+    var array = ["./img/five.webp", "./img/one.webp", "./img/three.webp", "./img/six.webp", "./img/two.webp"];
+    // 不停的换图片
+    function re() {
+      invar = setInterval(() => {
+        // 抽取随机数
+        index = Math.floor(Math.random() * 5);
+        document.images[0].src = array[index];
+      }, 300);
+    }
+    //鼠标点击停止
+    function stop() {
+      clearInterval(invar);
+      document.images[0].csrc == "./img/one.webp"
+        ? 0
+        : setTimeout(() => {
+            re();
+          }, 2000);
+    }
+  </script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .red {
+        color: red;
+      }
+      .red{
+        font-size: 30;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="./img/five.webp" alt="" />
+    <a href="" id="a1" class="1" onmouseover="over(this)" onmouseleave="leave(this)">1</a>
+    <a href="" id="a2" onmouseover="over(this)" onmouseleave="leave(this)">2</a>
+    <a href="" id="a3" onmouseover="over(this)" onmouseleave="leave(this)">3</a>
+    <a href="" id="a4" onmouseover="over(this)" onmouseleave="leave(this)">4</a>
+    <a href="" id="a5" onmouseover="over(this)" onmouseleave="leave(this)">5</a>
+  </body>
+  <script>
+    // 动态绑定事件
+    // element.onclick = function
+    rotate();
+    var array = ["./img/five.webp", "./img/one.webp", "./img/three.webp", "./img/six.webp", "./img/two.webp"];
+    var lastelement; //存放获取的元素
+    var index = 0;
+    // 定时
+    var inva;
+    // 不停换图片
+    function rotate() {
+      inva = setInterval(() => {
+        //   最后一个
+        if (index == 5) index = 0;
+        // 如果有元素有值删除
+        if (lastelement) lastelement.classList.remove("red");
+        // 获取图片
+        document.images[0].src = array[index++];
+        // 获取a标签
+        var aelement = document.getElementById("a" + index);
+        aelement.classList.add("red");
+        lastelement = aelement;
+      }, 1000);
+    }
+    // 鼠标放上
+    function over(a) {
+      // 清除定时
+      clearInterval(inva);
+      // 获取前一个元素清除类
+      lastelement.classList.remove("red");
+      // 给a添加颜色
+      a.classList.add("red");
+      // 获取a标元素
+      index = a.textContent;
+      // 相对应的图片
+      document.images[0].src = array[--index];
+    }
+    //鼠标离去
+    function leave(a) {
+      a.classList.remove("red");
+      // 从新开始
+      rotate();
+    }
+  </script>
+</html>
