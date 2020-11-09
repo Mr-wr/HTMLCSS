@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 属性选择器 */
+      /* 选着具有att属性的E元素 
+        E[att]{}*/
+      /* 属性选择器 */
+      input[value="text"] {
+        color: red;
+      }
+      /* 匹配以abc开头选着 E[att^="abc"]
+      匹配谁结尾E[att$="abc"]
+      包含abc的E[att*="abc"] */
+      /* 注意类选着、属性选着、伪类选着都是10 */
+
+      /* --------------------------结构选择器----------------------- */
+      /* 选择第一个 */
+      ul li:first-child {
+        color: red;
+      }
+      /* 选着最后一个 */
+      ul li:last-child {
+        color: yellow;
+      }
+      ul li:nth-child(4) {
+        color: blue;
+      }
+
+      /* 奇(odd)偶(even)选择 */
+      ul li:nth-child(even) {
+        color: red;
+      }
+
+      /* nth-child(n)公式
+      从0开始算每次加1
+      2n 偶数 2n+1奇数
+      5n 5的倍数开始
+      n+5 从第五个开始到最后
+      -n+5 前5个（包括5）
+       */
+      ol li:nth-child(n + 5) {
+        color: red;
+      }
+      /*  */
+    </style>
+  </head>
+  <body>
+    <div class="abcd1"></div>
+    <div class="abcd2"></div>
+    <div class="abcd3"></div>
+    <input type="text" value="text" />
+    <input type="text" value="" />
+
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+    </ul>
+    <ol>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+    </ol>
+  </body>
+</html>
