@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <style>
+      /* 应为图片是inline-block元素
+      所以有文字属性默认是基线对齐 */
+      img {
+        /* vertical-align: bottom; */ /* 给图片设置底部对齐方式 */
+        /* display: block; */ /* 变成块级元素 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="border">
+      <!-- 如果图片后面的文字没有紧贴图片后面会有空隙 -->
+      <img src="./img/one.webp" class="border" alt="" />
+      pjadsf
+    </div>
+  </body>
+</html>
