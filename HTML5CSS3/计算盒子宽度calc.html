@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <style>
+      /* calc中间要有空格没有空格就没有效果 */
+      div[class*="wh100"] > div {
+        width: calc(50% - 20px);
+        height: 50px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="border wh100">
+      <div class="border"></div>
+    </div>
+  </body>
+</html>
