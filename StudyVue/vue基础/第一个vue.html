@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 首先导入vue -->
+    <script src="../vuejs/vue.js"></script>
+  </head>
+  <body>
+    <!-- {{}}是什么语法来着
+      优点：处理数据和html分离
+      在标签外部无法显示
+    不能把html、body上面 -->
+    <div id="app">
+      {{ message }} {{array[0]}} {{school.name}}
+      <p v-text="array[0]+school.name"></p>
+    </div>
+    <script>
+      // 声明式编程
+      //  new Vue对象参数
+      const app = new Vue({
+        //挂载点(用于要挂载要管理的元素)
+        el: "#app",
+        data: {
+          message: "初学 Vue!/大傻子",
+          school: {
+            name: "大傻子学校",
+            movies: ["工作"],
+          },
+          array: ["你", "好"],
+        },
+      });
+
+      // vue指令v-text设置内容
+      //
+    </script>
+  </body>
+</html>
