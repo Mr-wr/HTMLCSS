@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <style>
+      /* 在字体里面写上font-family:"iconts";就可以了 */
+      div::before {
+        font-family: "iconts";
+        content: "我是";
+        display: block;
+        /* 默认是 */
+        box-sizing: content-box;
+        /* 不撑开width */
+        box-sizing: border-box;
+        /* 数字越大越模糊 */
+        filter: blur(15px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="border wh100">谢奇佑</div>
+  </body>
+</html>
