@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="../vuejs/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <h2>当前计数: {{counter}}</h2>
+      <!-- <button v-on:click="counter++">+</button>
+      <button v-on:click="counter--">-</button> -->
+
+      <!-- 如果点击发送很复杂的按钮时 -->
+      <!-- 添加点击事件 -->
+      <!-- <button v-on:click="add">+</button>
+      <button v-on:click="sub">-</button> -->
+
+      <!-- 语法糖（简写） -->
+      <button @click="add">+</button>
+      <button @click="sub">-</button>
+    </div>
+  </body>
+  <script>
+    const app = new Vue({
+      el: ".app",
+      data: {
+        counter: 0,
+      },
+      methods: {
+        add: function () {
+          console.log("add");
+          // 不能直接写counter否则会直接去全局去找
+          this.counter++;
+        },
+        sub: function () {
+          console.log("add");
+          this.counter--;
+        },
+      },
+    });
+  </script>
+</html>
