@@ -1,0 +1,39 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-11 06:50:59
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-11 07:03:25
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- 语法 -->
+      <h2>{{message}}</h2>
+      <!--{{message+firstname}}是一个表达式  -->
+      <h2>{{message+firstname}}</h2>
+      <h2>{{message}} {{firstname}}</h2>
+      <h2>{{counter*2}}</h2>
+      <h2 v-for="item in array">{{item}}</h2>
+    </div>
+    <script src="../vuejs/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: ".app",
+        data: {
+          message: "你好",
+          firstname: "周",
+          array: ["niaho", "zaijian", "busong"],
+          counter: 2,
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>
