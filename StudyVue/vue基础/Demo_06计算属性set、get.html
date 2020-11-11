@@ -1,0 +1,53 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-11 15:48:13
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-11 16:23:12
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- 为什么把他当属性使用不加（）
+      根据line42所以可以不用加（） -->
+      <h2>{{fullname}}</h2>
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: ".app",
+      data: {
+        firstname: "谢",
+        lastname: "奇佑",
+      },
+      methods: {},
+      // 计算属性有缓存
+      computed: {
+        // 属性对应的是对象
+        /* fullname: {
+          // 一般set都是空的
+          set: function (newValue) {
+            console.log(newValue);
+            this.firstname = newValue;
+          },
+          // 只读属性
+          get: function () {
+            this.firstname + this.lastname;
+          },
+        }, */
+        // 当没有set方式的时候上面的代码相等于下面给的
+        fullname: function () {
+          return this.firstname + this.lastname;
+        },
+      },
+    });
+  </script>
+</html>

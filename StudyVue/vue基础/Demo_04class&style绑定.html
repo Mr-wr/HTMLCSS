@@ -1,0 +1,37 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-11 14:25:25
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-11 14:53:28
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <h2 :style="getstyle()">style</h2>
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: ".app",
+      data: {
+        stylered: {
+          color: "red",
+        },
+      },
+      methods: {
+        getstyle: function () {
+          return this.stylered;
+        },
+      },
+    });
+  </script>
+</html>
