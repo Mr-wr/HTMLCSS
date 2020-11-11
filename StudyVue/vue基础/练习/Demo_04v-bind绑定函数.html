@@ -1,0 +1,43 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-11 11:35:38
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-11 11:36:17
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <h1 :class="{red:isred}">{{color}}</h1>
+      <button @click="coatc">点击</button>
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: ".app",
+      data: {
+        messages: "黑色",
+        color: "黑色",
+        isred: true,
+      },
+      methods: {
+        coatc: function () {
+          this.isred = !this.isred;
+        },
+      },
+    });
+  </script>
+</html>
