@@ -1,0 +1,66 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-11 06:50:59
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-11 10:32:56
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app" v-clok>
+      <!-- 语法 -->
+      <h2>{{message}}</h2>
+      <!--{{message+firstname}}是一个表达式  -->
+      <h2>{{message+firstname}}</h2>
+      <h2>{{message}} {{firstname}}</h2>
+      <h2>{{counter*2}}</h2>
+      <h2 v-for="item in array">{{item}}</h2>
+
+      <!-- v-once和const的意思一样第一次给值，
+        后面即使改变值也不会被修改
+      语法：后面不用跟表达式直接写v-once -->
+      <h2 v-once>{{message}}</h2>
+
+      <!-- v-html
+      如果数据时dom元素会把他转化成标签 -->
+      <h2 v-html="a"></h2>
+
+      <!-- v-pre
+      如果就是想显示{{message}}的话
+    就可以在标签上和v-once写法一样写上 -->
+
+      <!-- v-cloak
+        为什么需要这个呢：
+      因为在浏览器时从上往下解析的
+      如果js由于某些原因没有执行完全卡在一半
+      用户界面就会显示{{message}}
+      于是我们就可以在标签上添加v-cloak这个属性
+       功能：在还没有执行完的时候不显示界面
+      配合css属性选择器使用
+      例如：[v-cloak]:{display:none}
+      注：当vue解析之后，会去除v-cloak
+     -->
+      <h2 v-pre>{{message}}</h2>
+    </div>
+    <script src="../vuejs/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: ".app",
+        data: {
+          message: "你好",
+          a: "<a href=''>百度一下</a>",
+          firstname: "周",
+          array: ["niaho", "zaijian", "busong"],
+          counter: 2,
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>
