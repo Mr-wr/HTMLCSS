@@ -1,0 +1,68 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-11 10:37:07
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-11 11:31:06
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <!-- v-bind：[给哪一个属性赋值]绑定属性 -->
+      <img v-bind:src="imgURL" alt="" />
+      <!-- v-bind语法糖 -->
+      <a :href="aHref" target="_black">百度</a>
+
+      <!-- 也可以使用类
+        :class="{}"也可以使用用对象、函数、computed 
+        两个class不会覆盖会合并
+        可能会删掉的class就用：class-->
+      <h2 class="hepin" :class="active">活跃</h2>
+
+      <!-- 动态绑定属性对象 -->
+      <h2 :class="{red:isred}">黑色</h2>
+      <button @click="btn">变色</button>
+
+      <!-- 绑定函数 -->
+      <h2 :class="getClass()">函数</h2>
+      <button @click="btn">变色</button>
+
+      <!-- 绑定数组用的少 -->
+      <h2 :class="['niaho','aa']">数组</h2>
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: ".app",
+      data: {
+        messages: "nihao",
+        imgURL: "https://img.alicdn.com/imgextra/i2/6000000004590/O1CN011lYhXW1jmGZrGkxHq_!!6000000004590-2-octopus.png",
+        aHref: "https://www.baidu.com",
+        active: "active",
+        isred: false,
+      },
+      methods: {
+        btn: function () {
+          this.isred = !this.isred;
+        },
+        getClass: function () {
+          //从标签内复制下来要加this
+          return { red: this.isred };
+        },
+      },
+    });
+  </script>
+</html>
