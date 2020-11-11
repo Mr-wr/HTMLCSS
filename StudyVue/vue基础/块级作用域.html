@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+  </body>
+  <script>
+    // e5之前没有块作用域、只有函数才有作用域
+    // 函数不是立即执行当点击的时候才执行
+    // 点击后因为没有块作用域所以i就会去找for循环
+    // 里面的i，那是i已经++完了成了最后一个
+    var btn = document.getElementsByTagName("button");
+    for (var index = 0; index < btn.length; index++) {
+      btn[index].addEventListener("click", function () {
+        console.log("第" + index + "ni");
+      });
+    }
+    // 上面的代码相当于
+    var index = 0;
+    {
+      index = 0;
+      btn[index].addEventListener("click", function () {
+        console.log("第" + index + "ni");
+        index++;
+      });
+    }
+    {
+      index = 1;
+      btn[index].addEventListener("click", function () {
+        console.log("第" + index + "ni");
+        index++;
+      });
+    }
+    {
+      index = 2;
+      btn[index].addEventListener("click", function () {
+        console.log("第" + index + "ni");
+        index++;
+      });
+    }
+    {
+      index = 3;
+      btn[index].addEventListener("click", function () {
+        console.log("第" + index + "ni");
+        index++;
+      });
+    }
+    {
+      index = 4;
+      btn[index].addEventListener("click", function () {
+        console.log("第" + index + "ni");
+        index++;
+      });
+    }
+    {
+      console.log(index); //4
+    }
+  </script>
+</html>
