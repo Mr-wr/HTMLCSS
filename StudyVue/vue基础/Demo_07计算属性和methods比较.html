@@ -1,0 +1,53 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-11 16:26:07
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-11 17:10:59
+ * @Descripttion: 计算属性和methods比较（computed有缓存在数据没有改变的情况下只会执行一遍、而methods会全部执行
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>计算属性和methods比较</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- computed计算属性在没有改变数据的情况只会执行一遍 -->
+      <div>{{fullname}}</div>
+      <div>{{fullname}}</div>
+      <div>{{fullname}}</div>
+      <div>{{fullname}}</div>
+
+      <!-- methods函数每次都会执行 -->
+      <div>{{getname()}}</div>
+      <div>{{getname()}}</div>
+      <div>{{getname()}}</div>
+      <div>{{getname()}}</div>
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: ".app",
+      data: {
+        firstname: "谢",
+        lastname: "奇佑",
+      },
+      methods: {
+        getname: function () {
+          console.log("methods"); //打印4次
+          return this.firstname + this.lastname;
+        },
+      },
+      computed: {
+        fullname: function () {
+          console.log("computed"); //只打印一次
+          return this.firstname + this.lastname;
+        },
+      },
+    });
+  </script>
+</html>
