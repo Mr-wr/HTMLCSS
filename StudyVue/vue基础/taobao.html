@@ -1,0 +1,113 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-12 19:16:16
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-12 21:03:30
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .content {
+        top: 100px;
+        left: 100px;
+        width: 500px;
+        height: 300px;
+        /* background-color: green; */
+      }
+      .wrapper {
+        left: calc(50%);
+        transform: translate(-50%);
+        padding: 0 10px 0 10px;
+        bottom: 20px;
+        border-radius: 30px;
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      a {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-left: 10px;
+        background-color: #fff;
+        border-radius: 50%;
+      }
+      .wrapper a:first-child {
+        margin-left: 0;
+      }
+      .wrapper a:hover {
+        background-color: #f50;
+      }
+      .poabs {
+        position: absolute;
+      }
+      .por {
+        position: relative;
+      }
+      .border {
+        border: 1px solid black;
+      }
+      .content img {
+        width: 500px;
+        height: 300px;
+        transition: all 2s;
+      }
+      .content div:first-child {
+        position: absolute;
+        top: 50%;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+      .content div:nth-child(2) {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+      .red {
+        background-color: #f50;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box" class="content por">
+      <div id="left"><</div>
+      <div id="right">></div>
+      <img id="lunbo" src="./img/lunbo5.jpg" alt="" />
+      <div class="wrapper poabs">
+        <a href="" class="red"></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+      </div>
+    </div>
+  </body>
+  <script>
+    var img = document.getElementById("lunbo");
+    var aElementArrary = document.getElementById("box").getElementsByTagName("a");
+    var index = 0;
+    var lastElement;
+    var imgsrc = "./img/lunbo";
+    var jpg = ".jpg";
+    rotale();
+    //转起来
+    function rotale() {
+      stop = setInterval(() => {
+        if (index > 3) index = 0;
+        if (lastElement) lastElement.classList.remove("red");
+        aElementArrary[index].classList.add("red");
+        lastElement = aElementArrary[index];
+        img.src = imgsrc + index++ + jpg;
+      }, 2000);
+    }
+  </script>
+</html>
