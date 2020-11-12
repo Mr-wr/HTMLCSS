@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-11-12 22:14:45
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-12 22:34:02
+ * @LastEditTime: 2020-11-12 22:52:59
  * @Descripttion: 
 -->
 <!DOCTYPE html>
@@ -37,9 +37,15 @@
           //2、pop删除
           //3、shift()删除最后一个
           //4、unshift()最前面添加元素
-          this.letters.unshift("niaho");
+          // this.letters.unshift("niaho");
           //5、splice作用:删除元素/插入元素/替换元素
-          //删除：第一个式开始要删除的元素 第二个参数传入你要删除几个元素
+          //删除：第二个参数传入你要删除几个元素（如果没有传，就删处后面所有的元素）
+          //替换：第二个删除，表示我们要啊替换几个元素，后面是用于替换前面的元素
+          //插入元素：第二个参数，传入0，并且后面跟上要插入的元素
+          //6、sort排序
+          //7、revers()反转
+          //注意：通过索引值改变值的时候不会显示
+          this.letters[0] = "dsfa";
         },
         del() {
           this.letters.pop();
