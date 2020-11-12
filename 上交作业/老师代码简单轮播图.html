@@ -1,0 +1,66 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-12 14:55:09
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-12 15:34:56
+ * @Descripttion: 老师上课代码、发现图没有拍清楚干脆自己写了
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      a {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background-color: #000;
+      }
+      .currentA {
+        background-color: #f00;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="lbt">
+      <img src="./img/zero.webp" alt="" id="tu" />
+      <a href="" class="currentA"></a>
+      <a href=""></a>
+      <a href=""></a>
+      <a href=""></a>
+    </div>
+    <script>
+      var srcArr = ["./img/zero.webp", "./img/five.webp", "./img/one.webp", "./img/four.webp"];
+      var oImg = document.getElementById("tu");
+      var index = 0;
+      var lastElement;
+      var aC = document.getElementById("lbt").getElementsByTagName("a");
+      var stop;
+      rotate();
+      function rotate() {
+        stop = setInterval(() => {
+          if (index > 3) index = 0;
+          if (lastElement) lastElement.classList.remove("currentA");
+          oImg.src = srcArr[index];
+          lastElement = aC[index];
+          aC[index++].classList.add("currentA");
+        }, 1000);
+      }
+      for (let i = 0; i < aC.length; i++) {
+        aC[i].onmouseover = function () {
+          clearInterval(stop);
+          lastElement.classList.remove("currentA");
+          lastElement = aC[i];
+          oImg.src = srcArr[i];
+          index = i;
+          aC[i].classList.add("currentA");
+        };
+        aC[i].onmouseleave = function () {
+          rotate();
+        };
+      }
+    </script>
+  </body>
+</html>
