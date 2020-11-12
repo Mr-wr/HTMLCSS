@@ -1,0 +1,48 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-12 21:47:04
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-12 22:12:15
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <ul>
+        <!-- 1、在遍历对象过程中，如果只是获取一个值那么就是value -->
+        <li v-for="item in names">{{item}}</li>
+        <!--也可以有key -->
+        <li v-for="(value,key) in info">{{key}}--{{value}}</li>
+      </ul>
+      <!--尽量使用key  内部性能更高 -->
+      <ul>
+        <li v-for="item in letters" :key="item">{{item}}</li>
+      </ul>
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    //letters.splice()
+    let app = new Vue({
+      el: ".app",
+      data: {
+        letters: ["a", "b", "c", "d", "e"],
+        names: ["djfs", "dsafkj", "djfsak", "dsafjk"],
+        info: {
+          name: "xie",
+          age: 22,
+          height: 1.88,
+        },
+      },
+      methods: {},
+      computed: {},
+    });
+  </script>
+</html>
