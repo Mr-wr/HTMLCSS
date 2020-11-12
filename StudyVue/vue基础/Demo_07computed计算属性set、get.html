@@ -2,8 +2,10 @@
  * @Author: qi-you
  * @Date: 2020-11-11 15:48:13
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-11 16:23:12
- * @Descripttion: 
+ * @LastEditTime: 2020-11-12 11:17:01
+ * @Descripttion:详解computed计算属性
+ 1、计算属性中于set和get两个函数用来获得和设置数据的函数
+ 2、set一般都不写让他变成只读的属性
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +46,7 @@
           },
         }, */
         // 当没有set方式的时候上面的代码相等于下面给的
-        fullname: function () {
+        fullname() {
           return this.firstname + this.lastname;
         },
       },

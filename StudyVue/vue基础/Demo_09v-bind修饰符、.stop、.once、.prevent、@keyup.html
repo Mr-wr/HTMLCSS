@@ -2,8 +2,14 @@
  * @Author: qi-you
  * @Date: 2020-11-12 08:33:28
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-12 09:33:07
+ * @LastEditTime: 2020-11-12 11:27:10
  * @Descripttion: 
+ 1、.stop 父子结构时点子结构父亲也有相应可以在子节点写上这个属性就之会触发子结构(目前还不懂)
+ 2、.noce 只能触发一次
+ 3、.prevent 阻止他默认行为
+ 列如：<input type="submit" value="提交" @click.prevent="submitclick" />
+ 标签点击后会默认提交到form的地址添加了.prevent后就不会提交了
+ 4、@keyup监听
 -->
 <!DOCTYPE html>
 <html lang="en">

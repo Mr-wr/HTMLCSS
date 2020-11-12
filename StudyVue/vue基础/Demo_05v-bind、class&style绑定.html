@@ -2,8 +2,9 @@
  * @Author: qi-you
  * @Date: 2020-11-11 14:25:25
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-11 14:53:28
- * @Descripttion: 
+ * @LastEditTime: 2020-11-12 11:10:27
+ * @Descripttion: v-bind绑定样式用法
+ 1、一般就是用函数来返回样式使html结构更简洁
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -14,24 +15,24 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="app">
-      <h2 :style="getstyle()">style</h2>
-    </div>
+    <div class="app" :style="getstyle()">message</div>
   </body>
   <script src="../vuejs/vue.js"></script>
   <script>
-    let vm = new Vue({
+    let app = new Vue({
       el: ".app",
       data: {
-        stylered: {
+        style: {
           color: "red",
+          fontSize: "50px",
         },
       },
       methods: {
-        getstyle: function () {
-          return this.stylered;
+        getstyle() {
+          return this.style;
         },
       },
+      computed: {},
     });
   </script>
 </html>
