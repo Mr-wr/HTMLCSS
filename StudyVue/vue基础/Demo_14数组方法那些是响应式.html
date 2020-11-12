@@ -1,0 +1,51 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-12 22:14:45
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-12 22:34:02
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <ul>
+        <li v-for="item in letters">{{item}}</li>
+      </ul>
+      <button @click="add()">按钮add</button>
+      <button @click="del()">deletes</button>
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: ".app",
+      data: {
+        letters: ["adf", "sdfa", "dslakfj", "sdlfj"],
+      },
+      methods: {
+        add() {
+          // 数组的响应式方法
+          //1、push
+          // this.letters.push("niah");
+          //2、pop删除
+          //3、shift()删除最后一个
+          //4、unshift()最前面添加元素
+          this.letters.unshift("niaho");
+          //5、splice作用:删除元素/插入元素/替换元素
+          //删除：第一个式开始要删除的元素 第二个参数传入你要删除几个元素
+        },
+        del() {
+          this.letters.pop();
+        },
+      },
+      computed: {},
+    });
+  </script>
+</html>
