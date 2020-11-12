@@ -1,0 +1,41 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-12 16:59:08
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-12 17:31:16
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 元素复用问题 -->
+    <div class="app">
+      <span v-if="isemail">
+        <!-- input里面写了数据时点击切换数据也会跟过去
+        原因：在vue解析的时候中间有虚拟机，不会全部都解析，会进行比较如果标签一样那么
+      会使用同一个标签只是把不同的变量修改一下
+    解决方法：标签内有一个key只要时不同的值就可以了 -->
+        用户名：<input type="text" key="user" />
+      </span>
+      <span v-else>邮箱：<input type="text" key="email" /></span>
+      <button @click="isemail = !isemail">切换</button>
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: ".app",
+      data: {
+        isemail: true,
+      },
+      methods: {},
+      computed: {},
+    });
+  </script>
+</html>
