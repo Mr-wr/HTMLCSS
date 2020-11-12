@@ -1,0 +1,62 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-12 08:33:28
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-12 09:33:07
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- 1、按钮被包住时点击按钮会引发两个函数
+      使用@click.stop阻止 -->
+      <div @click="divclick">
+        <button @click.stop="btnclick">按钮</button>
+      </div>
+
+      <!-- .prevent阻止默认行为 -->
+      <form action="#">
+        <!-- 这个按钮默认时提交到地址 -->
+        <input type="submit" value="提交" @click.prevent="submitclick" />
+      </form>
+
+      <!-- 监听某个按钮的点击
+      @keyup 所有键盘松开时-->
+      <!-- <input type="text" name="" id="" @keyup="keyup" /> -->
+      <!-- @keyup.enter键盘回车 .once只会触发一次 -->
+      <input type="text" @keyup.enter.once="enter" />
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: ".app",
+      data: {},
+      methods: {
+        divclick() {
+          console.log("div");
+        },
+        btnclick() {
+          console.log("btn");
+        },
+        submitclick() {
+          console.log("submit");
+        },
+        keyup() {
+          console.log("keyup");
+        },
+        enter() {
+          console.log("keyupenter");
+        },
+      },
+      computed: {},
+    });
+  </script>
+</html>
