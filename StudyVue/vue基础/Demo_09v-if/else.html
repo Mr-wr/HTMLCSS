@@ -1,0 +1,45 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-12 09:43:15
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-12 10:25:42
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- v-if="{也可以添加表达式}" -->
+      <div v-if="message<10">
+        <!--如果是false一下的都不会显示 -->
+        message<10
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+        </ul>
+        {{message}}
+      </div>
+      <!-- 也可以添加表达式 -->
+      <!-- <div v-if="message>10&&message<16">{{message}}message>10&&message<16</div> -->
+      <div v-else="">{{message}}v-else</div>
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: ".app",
+      data: {
+        message: 23,
+      },
+      methods: {},
+      computed: {},
+    });
+  </script>
+</html>
