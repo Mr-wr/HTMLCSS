@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-11-11 11:35:38
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-11 11:36:17
+ * @LastEditTime: 2020-11-13 08:52:23
  * @Descripttion: 
 -->
 <!DOCTYPE html>
@@ -14,30 +14,31 @@
     <title>Document</title>
     <style>
       .red {
-        color: red;
+        color: #f00;
       }
     </style>
   </head>
   <body>
     <div class="app">
-      <h1 :class="{red:isred}">{{color}}</h1>
-      <button @click="coatc">点击</button>
+      <ul>
+        <li v-for="item,index in movies" @click="liclick(index)" :class="{red:curreIndex===index}">{{item}}</li>
+      </ul>
     </div>
   </body>
-  <script src="../vuejs/vue.js"></script>
+  <script src="../../vuejs/vue.js"></script>
   <script>
-    let vm = new Vue({
+    let app = new Vue({
       el: ".app",
       data: {
-        messages: "黑色",
-        color: "黑色",
-        isred: true,
+        movies: ["海贼王", "海王", "火影忍者", "赌圣"],
+        curreIndex: -1,
       },
       methods: {
-        coatc: function () {
-          this.isred = !this.isred;
+        liclick(index) {
+          this.curreIndex = index;
         },
       },
+      computed: {},
     });
   </script>
 </html>
