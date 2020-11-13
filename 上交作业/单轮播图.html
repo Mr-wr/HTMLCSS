@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-11-12 14:55:09
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-12 15:34:56
+ * @LastEditTime: 2020-11-13 17:03:50
  * @Descripttion: 老师上课代码、发现图没有拍清楚干脆自己写了
 -->
 <!DOCTYPE html>
@@ -25,14 +25,15 @@
   </head>
   <body>
     <div id="lbt">
-      <img src="./img/zero.webp" alt="" id="tu" />
+      <img src="./img/0.jpg" alt="" id="tu" />
       <a href="" class="currentA"></a>
       <a href=""></a>
       <a href=""></a>
       <a href=""></a>
     </div>
     <script>
-      var srcArr = ["./img/zero.webp", "./img/five.webp", "./img/one.webp", "./img/four.webp"];
+      var imgSrc = "./img/";
+      var jpg = ".jpg";
       var oImg = document.getElementById("tu");
       var index = 0;
       var lastElement;
@@ -43,7 +44,8 @@
         stop = setInterval(() => {
           if (index > 3) index = 0;
           if (lastElement) lastElement.classList.remove("currentA");
-          oImg.src = srcArr[index];
+          console.log(imgSrc + index + jpg);
+          oImg.src = imgSrc + index + jpg;
           lastElement = aC[index];
           aC[index++].classList.add("currentA");
         }, 1000);
@@ -53,7 +55,7 @@
           clearInterval(stop);
           lastElement.classList.remove("currentA");
           lastElement = aC[i];
-          oImg.src = srcArr[i];
+          oImg.src = imgSrc + i + jpg;
           index = i;
           aC[i].classList.add("currentA");
         };
