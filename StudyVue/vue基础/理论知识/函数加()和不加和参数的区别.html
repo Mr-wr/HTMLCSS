@@ -1,0 +1,53 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-13 18:14:36
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-13 18:44:48
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- 函数加不加（） -->
+      <!-- 1、当@click=add不加()时，而methods定义的add(event)写了参数
+      系统会默认传入一个event参数代替
+      -->
+      <button @click="add" value="e">{{count}}</button>
+
+      <!-- 2、当加了@clikc()但是没有传入参数进去，而methods定义的add(event)写了参数
+      系统就不会传入event代替，而是这个参数为空undefined  -->
+      <button @click="add()" value="e">{{count}}</button>
+
+      <!-- 如果又要穿参数和event时，methods(a,enent)定义两个参数
+      传入@click=add(1,$event)这样传入 -->
+      <button @click="add(1,$event)" value="e">{{count}}</button>
+    </div>
+  </body>
+  <script src="../../vuejs/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: ".app",
+      data: {
+        count: 0,
+      },
+      methods: {
+        add(a) {
+          console.log(a);
+          this.count++;
+        },
+        add(a, event) {
+          console.log(a, event);
+          this.count++;
+        },
+      },
+      computed: {},
+    });
+  </script>
+</html>
