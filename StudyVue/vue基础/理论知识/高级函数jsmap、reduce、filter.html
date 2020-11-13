@@ -1,0 +1,43 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-13 15:42:05
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-13 17:17:56
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app"></div>
+  </body>
+
+  <script>
+    let numberArray = [1, -1, 1, 1];
+    //filter返回一个数组
+    let sum = numberArray.filter(
+      //一个函数里面不断循环返回一个布尔值
+      (n) => n > 0
+    );
+    console.log(sum); //[1, 1, 1];
+
+    //map也是返回一个数组
+    let totalNumber = numberArray.map(
+      //不断循环对数组的每个元素进行操作
+      (n) => n + 2
+    );
+    console.log(totalNumber); //[3,2,3,3]
+
+    //reduce不是返回一个数组
+    let tmp = numberArray.reduce(
+      //不断循环每个值相加后结果
+      (sum, n) => sum + n
+    );
+    console.log(tmp); //2
+  </script>
+</html>
