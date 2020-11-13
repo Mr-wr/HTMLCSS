@@ -1,0 +1,94 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-13 09:06:37
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-13 15:39:32
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <table border="1">
+        <tr>
+          <td></td>
+          <td>书籍名称</td>
+          <td>出版社</td>
+          <td>价格</td>
+          <td>购买数量</td>
+          <td>操作</td>
+        </tr>
+        <tr v-for="(book,index) in books" :key="index">
+          <td>{{index+1}}</td>
+          <td>{{book.name}}</td>
+          <td>{{book.date}}</td>
+          <td>{{book.price}}</td>
+          <!-- 小于零就不让他可以点击 -->
+          <td>
+            <button @click="deletCount(book)" :disabled="book.count<=1">-</button>
+            {{book.count}}
+            <button @click="addCount(book)">+</button>
+          </td>
+          <td><button @click="delet(index)">删除</button></td>
+        </tr>
+      </table>
+      <p>总价格：￥{{totalPrice}}</p>
+    </div>
+  </body>
+  <script src="../../vuejs/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: ".app",
+      data: {
+        books: [
+          {
+            name: "《算法导论》",
+            date: "2006-9",
+            price: 85,
+            count: 1,
+          },
+          {
+            name: "《算法导论》",
+            date: "2006-9",
+            price: 85,
+            count: 1,
+          },
+          {
+            name: "《算法导论》",
+            date: "2006-9",
+            price: 85,
+            count: 1,
+          },
+        ],
+      },
+      methods: {
+        delet(index) {
+          this.books.splice(index, 1);
+        },
+        addCount(book) {
+          book.count++;
+        },
+        deletCount(book) {
+          // if (book.count > 1)
+          book.count--;
+        },
+      },
+      computed: {
+        totalPrice() {
+          var totalprices = 0;
+          // for (let index = 0; index < this.books.length; index++) {
+          //   totalprices += this.books[index].count * this.books[index].price;
+          // }
+          // 使用高级函数
+          return this.books.reduce((preValue, book) => preValue + book.count * book.price, 0);
+        },
+      },
+    });
+  </script>
+</html>
