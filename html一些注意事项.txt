@@ -1,0 +1,41 @@
+# html一些注意事项
+
+[toc]
+
+### 内容溢出
+> 因为`一个单词`溢出时不管的，
+> 编辑器中`空格`的含义就是`英文单词分隔符`不管打多少空格都是显示一个空格
+> 如果要显示多个空格可以使`&nbsp`
+ ![Alt text](./htm内容溢出.png)
+
+### img图片之间空隙、和文本对齐方式
+#### 图片之间空隙
+![Alt text](./图片之间空隙.png)
+
+>**原因：凡是自带inline的元素，都有文字属性，有文字属性没有写在一起有空格就会被分割**
+> 解决方式：代码写在一起
+![Alt text](./图片之间间隙解决方法.png)
+#### 图片底部留白
+![Alt text](./图片底部空白.png)
+
+### margin塌陷
+![Alt text](./margin塌陷说明.png)
+**注：只有子元素margin-top大于父元素的top时整体盒子才会往下走**
+![Alt text](./margin塌陷解决方法.png)
+
+### 溢出文本，打点
+#### 单行文本
+![Alt text](./单行溢出文本打点.png)
+#### 多行文本
+![Alt text](./多行文本溢出打点...png)
+
+### 嵌套规则
+![Alt text](./嵌套规则.png)
+
+
+### vertical-align文本图片对齐方式
+![Alt text](./vertical-align用法.png)
+![Alt text](./vertical-align.png)
+![Alt text](./vertical-align参数.png)
+![Alt text](./vertical-align代码.png)
+![Alt text](./vertical-align案例.png)
