@@ -2,8 +2,9 @@
  * @Author: qi-you
  * @Date: 2020-11-12 22:14:45
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-12 22:52:59
- * @Descripttion: 
+ * @LastEditTime: 2020-11-15 20:21:52
+ * @Descripttion: 那些方法改变数组界面不会相应
+    根据索引array[index]来删除或者添加修改界面不会有相应
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -38,10 +39,20 @@
           //3、shift()删除最后一个
           //4、unshift()最前面添加元素
           // this.letters.unshift("niaho");
-          //5、splice作用:删除元素/插入元素/替换元素
-          //删除：第二个参数传入你要删除几个元素（如果没有传，就删处后面所有的元素）
-          //替换：第二个删除，表示我们要啊替换几个元素，后面是用于替换前面的元素
-          //插入元素：第二个参数，传入0，并且后面跟上要插入的元素
+
+          //5、splice
+          //就是用删除的方式来插入删除替换
+          // 插入
+          // array.splice(index,0,data1,data2,...)
+          //index:插入的位置
+          //0：删除的的个数
+          // this.letters.splice(2,4,2,3,4,5);\\11234511
+
+          //替换
+          this.letters.splice(0, this.letters.length, 1, 2, 3, 4, 5, 6, 7);
+
+          //删除
+          this.tmp.splice(0, 1);
           //6、sort排序
           //7、revers()反转
           //注意：通过索引值改变值的时候不会显示

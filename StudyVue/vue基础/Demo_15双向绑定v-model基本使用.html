@@ -1,0 +1,91 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-13 17:27:57
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-15 22:17:17
+ * @Descripttion: v-model双向绑定，绑定input的话一般是绑定到vaule中
+    radio：单个值
+    checkbox：
+          单选：布尔值true来判断选了没有
+          多选：数组[]
+    select：
+          单选：单个值
+          多选：数组[]
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- 概念 -->
+      <!-- v-model双向绑定
+      在input中写了v-model相当于绑定了input中的value
+      即使在input里面修改了值data数据里message也会被修改 -->
+      <input type="text" v-model="message" />
+      {{message}}
+
+      <!-- 怎么是实现的
+      1、先单向绑定:value=message
+      2、@input改变时调用函数（这里写表达式就可以) -->
+      <input type="text" name="" id="" :value="message" @input="message = $event.target.value" />
+
+      <!-- v-model绑定radio
+        当v-model绑定了后可以不用使用name -->
+      <input type="radio" v-model="sex" value="男" />男 <input type="radio" v-model="sex" value="女" />女
+      <h2>你选择的是:{{sex}}</h2>
+
+      <!-- 绑定checkbox、label好处？ -->
+      <!-- label好处就是选着的时候点击文字也会触发但是id要一样 -->
+      <!-- 单选的时候是一个布尔类型来判断你选择了还是没有 -->
+      <label for="a"> <input type="checkbox" name="" id="a" value="篮球" v-model="isAgree" />同意 </label>
+      <button :disabled="!isAgree">下一步</button>
+      <h2>你选择的是:{{isAgree}}</h2>
+
+      <!-- 多选可以使用数组来记录多选的值 -->
+      <input type="checkbox" value="篮球" id="" v-model="like" />
+      <input type="checkbox" value="足球" id="" v-model="like" />
+      <input type="checkbox" value="乒乓球" id="" v-model="like" />
+      <input type="checkbox" value="羽毛球" id="" v-model="like" />
+      <h2>你喜欢的是:{{like}}</h2>
+
+      <!-- 绑定select单选不怎么常用 -->
+      <select name="" id="" v-model="address">
+        <option value="北京">北京</option>
+        <option value="江西">江西</option>
+        <option value="上海">上海</option>
+        <option value="天津">天津</option>
+      </select>
+      <h2>你选择的是:{{address}}</h2>
+
+      <!-- 绑定select多选 -->
+      <select name="" v-model="addresses" id="" multiple="multiple">
+        <option value="北京">北京</option>
+        <option value="江西">江西</option>
+        <option value="上海">上海</option>
+        <option value="天津">天津</option>
+      </select>
+      <h2>你选择的是:{{addresses}}</h2>
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: ".app",
+      data: {
+        message: "adfa",
+        sex: "男",
+        isAgree: false,
+        like: [],
+        address: "上海",
+        addresses: ["上海"],
+      },
+      methods: {},
+      computed: {},
+    });
+  </script>
+</html>
