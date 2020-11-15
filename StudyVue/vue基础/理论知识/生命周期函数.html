@@ -1,0 +1,45 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-11 06:00:48
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-12 11:37:07
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .app{
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app"></div>
+    <script src="../vuejs/vue.js"></script>
+    <script>
+      const vm = new Vue({
+        //   el也可以是元素
+        //el:document.getElementById("id")
+        el: ".app",
+        data: {},
+        methods: {},
+        // 生命周期函数回调
+        //created一般是一些网络请求
+        created: function () {
+          console.log("created");
+        },
+        mounted: function () {
+          console.log("mounted");
+        },
+        //也叫钩子函数 hook：钩子
+        beforeCreate: function () {
+          console.log("bfc");
+        },
+      });
+    </script>
+  </body>
+</html>
