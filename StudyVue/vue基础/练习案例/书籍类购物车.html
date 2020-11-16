@@ -2,8 +2,10 @@
  * @Author: qi-you
  * @Date: 2020-11-13 09:06:37
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-13 15:39:32
- * @Descripttion: 
+ * @LastEditTime: 2020-11-16 16:58:30
+ * @Description: 书籍购物车案例
+      运用知识：v-for、v-model、v-bind、
+      函数（map、reduce、filter、过滤器）
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -12,32 +14,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      /* td {
+        padding: 0;
+      } */
+    </style>
   </head>
   <body>
     <div class="app">
       <table border="1">
         <tr>
           <td></td>
+          <td></td>
           <td>书籍名称</td>
-          <td>出版社</td>
+          <td>出版时间</td>
           <td>价格</td>
           <td>购买数量</td>
           <td>操作</td>
         </tr>
         <tr v-for="(book,index) in books" :key="index">
+          <td><input type="checkbox" :value="book" v-model="book.isSelect" /></td>
           <td>{{index+1}}</td>
           <td>{{book.name}}</td>
           <td>{{book.date}}</td>
-          <td>{{book.price}}</td>
+          <td>{{book.price | showPrice}}</td>
           <!-- 小于零就不让他可以点击 -->
           <td>
-            <button @click="deletCount(book)" :disabled="book.count<=1">-</button>
+            <button @click="deleteCount(book)" :disabled="book.count<=1">-</button>
             {{book.count}}
             <button @click="addCount(book)">+</button>
           </td>
           <td><button @click="delet(index)">删除</button></td>
         </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><input type="text" placeholder="书品名称" v-model="tmpBook.name" /></td>
+          <td><input type="text" placeholder="出版日期" v-model="tmpBook.date" /></td>
+          <td><input type="text" placeholder="书籍单价" v-model="tmpBook.price" /></td>
+          <td>
+            <button :disabled="tmpBook.count<=1" @click="deleteTmpCount">-</button>
+            {{tmpBook.count}}
+            <button @click="addTmpCount">+</button>
+          </td>
+          <td><button @click="addBook()">添加</button></td>
+        </tr>
       </table>
+      <p>你选择的书籍有：{{selectBooks}}</p>
+      <p>总共选择 {{totalBooks}} 本书</p>
       <p>总价格：￥{{totalPrice}}</p>
     </div>
   </body>
@@ -46,24 +75,34 @@
     let app = new Vue({
       el: ".app",
       data: {
+        tmpBook: {
+          name: "",
+          date: "",
+          price: null,
+          count: 1,
+          isSelect: false,
+        },
         books: [
           {
             name: "《算法导论》",
             date: "2006-9",
-            price: 85,
+            price: 82,
             count: 1,
+            isSelect: false,
           },
           {
-            name: "《算法导论》",
+            name: "《计算机基础》",
             date: "2006-9",
-            price: 85,
+            price: 90,
             count: 1,
+            isSelect: false,
           },
           {
-            name: "《算法导论》",
+            name: "《网络编程》",
             date: "2006-9",
-            price: 85,
+            price: 105,
             count: 1,
+            isSelect: false,
           },
         ],
       },
@@ -71,12 +110,42 @@
         delet(index) {
           this.books.splice(index, 1);
         },
+
         addCount(book) {
           book.count++;
         },
-        deletCount(book) {
+
+        deleteCount(book) {
           // if (book.count > 1)
           book.count--;
+        },
+
+        addBook() {
+          this.books.splice(this.books.length, 0, {
+            name: this.tmpBook.name,
+            date: this.tmpBook.date,
+            price: this.tmpBook.price,
+            count: this.tmpBook.count,
+            isSelect: this.tmpBook.isSelect,
+          });
+          //清空
+          this.tmpBook.name = "";
+          this.tmpBook.date = "";
+          this.tmpBook.count = 1;
+          this.tmpBook.price = null;
+        },
+
+        deleteTmpCount() {
+          this.tmpBook.count--;
+        },
+        addTmpCount() {
+          this.tmpBook.count++;
+        },
+      },
+      //过滤器
+      filters: {
+        showPrice(price) {
+          return "￥" + price;
         },
       },
       computed: {
@@ -86,7 +155,20 @@
           //   totalprices += this.books[index].count * this.books[index].price;
           // }
           // 使用高级函数
-          return this.books.reduce((preValue, book) => preValue + book.count * book.price, 0);
+          // return this.books.reduce((preValue, book) => preValue + book.count * book.price, 0);
+          return this.books.reduce((preValue, book) => {
+            if (book.isSelect) return preValue + book.count * book.price;
+            else return preValue + 0;
+          }, 0);
+        },
+
+        selectBooks() {
+          let books = this.books.filter((n) => n.isSelect);
+          return books.map((n) => n.name);
+        },
+        totalBooks() {
+          // return this.books.filter((n) => n.isSelect).length;
+          return this.books.filter((n) => n.isSelect).reduce((sum, book) => sum + book.count, 0);
         },
       },
     });
