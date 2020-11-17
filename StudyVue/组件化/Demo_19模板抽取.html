@@ -1,0 +1,73 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-17 09:02:43
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-17 09:38:06
+ * @Descripttion: 
+--><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- <cpn1></cpn1> -->
+      <cpn2></cpn2>
+    </div>
+
+    <!-- 11、模板 -->
+    <!-- <script type="text/x-template" id="cpn">
+      <div>
+        <h1>模板抽取</h1>
+      </div>
+    </script> -->
+
+    <!-- 2、template标签 -->
+    <template id="cpn">
+      <div>
+        <h1>模板抽取</h1>
+      </div>
+    </template>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    //语法糖
+    //在内部还是调用了extende
+    // Vue.component("cpn1", {
+    //   template: `
+    //   <div>
+    //     <h1>全局语法糖写法</h1>
+    //   </div>
+    //   `,
+    // });
+    Vue.component("cpn2", {
+      template: "#cpn",
+    });
+    let app = new Vue({
+      el: ".app",
+      data: {},
+      methods: {},
+      computed: {},
+      components: {
+        //模板抽取
+        // cpn2: {
+        //   template: "#cpn",
+        // },
+        // cpn2:
+        //语法糖
+        //   {
+        //     template: `
+        // <div>
+        //   <h1>局部语法糖写法</h1>
+        // </div>
+        // `,
+        //   },
+      },
+    });
+
+    //分离写法
+  </script>
+</html>
