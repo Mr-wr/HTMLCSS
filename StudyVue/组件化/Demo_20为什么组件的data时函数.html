@@ -1,0 +1,63 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-17 10:05:32
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-17 16:36:36
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- 如果组件的data不是函数那么只要一个组件修改了值那么其他的组件的值都会改变
+          在组件中调用变量,不会去vue实例去找 -->
+      <cpn></cpn>
+      <cpn></cpn>
+      <cpn></cpn>
+      <cpn></cpn>
+    </div>
+    <template id="cpn">
+      <div>
+        <h1>count:{{count}}</h1>
+        <button @click="add">+</button>
+        <button @click="delet">-</button>
+      </div>
+    </template>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    //注册组件(全局)
+    Vue.component("cpn", {
+      template: "#cpn",
+      prop: [],
+      methods: {
+        add() {
+          this.count++;
+        },
+        delet() {
+          this.count--;
+        },
+      },
+      data() {
+        return {
+          count: 1,
+        };
+      },
+    });
+
+    let app = new Vue({
+      el: ".app",
+      data: {
+        count: -100,
+      },
+      methods: {},
+      computed: {},
+    });
+  </script>
+</html>
