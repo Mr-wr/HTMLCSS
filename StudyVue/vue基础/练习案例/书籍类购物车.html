@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-11-13 09:06:37
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-16 16:58:30
+ * @LastEditTime: 2020-11-17 12:29:54
  * @Description: 书籍购物车案例
       运用知识：v-for、v-model、v-bind、
       函数（map、reduce、filter、过滤器）
@@ -56,7 +56,7 @@
           <td></td>
           <td><input type="text" placeholder="书品名称" v-model="tmpBook.name" /></td>
           <td><input type="text" placeholder="出版日期" v-model="tmpBook.date" /></td>
-          <td><input type="text" placeholder="书籍单价" v-model="tmpBook.price" /></td>
+          <td><input type="text" placeholder="书籍单价" v-model.number="tmpBook.price" /></td>
           <td>
             <button :disabled="tmpBook.count<=1" @click="deleteTmpCount">-</button>
             {{tmpBook.count}}
@@ -67,7 +67,7 @@
       </table>
       <p>你选择的书籍有：{{selectBooks}}</p>
       <p>总共选择 {{totalBooks}} 本书</p>
-      <p>总价格：￥{{totalPrice}}</p>
+      <p>总价格：{{totalPrice | showPrice}}</p>
     </div>
   </body>
   <script src="../../vuejs/vue.js"></script>
@@ -145,7 +145,7 @@
       //过滤器
       filters: {
         showPrice(price) {
-          return "￥" + price;
+          return "￥" + price.toFixed(2);
         },
       },
       computed: {
