@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-11-12 19:16:16
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-12 21:03:30
+ * @LastEditTime: 2020-11-17 10:09:08
  * @Descripttion: 
 -->
 <!DOCTYPE html>
@@ -82,10 +82,10 @@
     <div id="box" class="content por">
       <div id="left"><</div>
       <div id="right">></div>
-      <img id="lunbo" src="./img/lunbo5.jpg" alt="" />
+      <img id="lunbo" src="../img/lunbo5.jpg" alt="" />
       <div class="wrapper poabs">
         <a href="" class="red"></a>
-        <a href=""></a>
+        <a href="" onmouseout=""></a>
         <a href=""></a>
         <a href=""></a>
       </div>
@@ -96,7 +96,7 @@
     var aElementArrary = document.getElementById("box").getElementsByTagName("a");
     var index = 0;
     var lastElement;
-    var imgsrc = "./img/lunbo";
+    var imgsrc = "../img/lunbo";
     var jpg = ".jpg";
     rotale();
     //转起来
@@ -108,6 +108,19 @@
         lastElement = aElementArrary[index];
         img.src = imgsrc + index++ + jpg;
       }, 2000);
+    }
+    for (let i = 0; i < aElementArrary.length; i++) {
+      aElementArrary[i].onmouseover = () => {
+        clearInterval(stop);
+        if (lastElement) lastElement.classList.remove("red");
+        aElementArrary[i].classList.add("red");
+        img.src = imgsrc + i + jpg;
+        index = i;
+        lastElement = aElementArrary[i];
+      };
+      aElementArrary[i].onmouseout = () => {
+        rotale();
+      };
     }
   </script>
 </html>
