@@ -1,0 +1,46 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-16 14:23:07
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-16 20:34:02
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <label v-for="item in likes"> <input type="checkbox" :value="item" v-model="selectLike" />{{item}} </label>
+      你选择的是{{selectLike}}
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let a = [1, 2, 3, 34, 4, 5];
+    let b = [
+      {
+        name: "niah ",
+        age: 14,
+      },
+    ];
+    console.log(
+      b.map((n) => {
+        (n.age = 13,n.name = "nihao")
+      })
+    );
+    let app = new Vue({
+      el: ".app",
+      data: {
+        likes: ["篮球", "羽毛球", "乒乓球", "网球", "高尔夫球", "台球"],
+        selectLike: [],
+      },
+      methods: {},
+      computed: {},
+    });
+  </script>
+</html>
