@@ -1,0 +1,71 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-16 21:58:26
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-17 09:01:17
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 基本步骤
+     只能在vue的实例范围内
+  1、创建组件构造器对象
+  2、全局\局部注册
+  3、使用组件 -->
+
+    <!-- ES6``可以换行 -->
+
+    <div class="app">
+      <!-- 使用组件 -->
+      <cpn></cpn>
+    </div>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    const cpnC1 = Vue.extend({
+      template: `
+      <div>
+        <h1>我是cpnC1</h1>
+      </div>`,
+    });
+    //有全局
+    //创建主键构造器
+    const cpnC2 = Vue.extend({
+      //模板为啥都有最外层div（后面讲）
+      //嵌套时也要写入cpn1才有用
+      template: `
+      <div>
+        <h2>我是标题</h2>
+        <p>我四内容</p>
+        <cpn1></cpn1>
+      </div>`,
+      // 父子组件
+      components: {
+        cpn1: cpnC1,
+      },
+    });
+
+    //2、注册组件（全局注册、意味着可以在多个vue下使用）
+    //Vue.computed(里面写想用什么使用他,构造器)
+
+    //2、局部组件
+    // Vue.component("my-cpn", cpnC);
+    let app = new Vue({
+      el: ".app",
+      data: {},
+      methods: {},
+      computed: {},
+      //2、局部组件
+      components: {
+        cpn: cpnC2,
+      },
+    });
+  </script>
+</html>
