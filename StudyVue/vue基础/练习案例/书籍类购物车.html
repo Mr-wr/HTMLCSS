@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-11-13 09:06:37
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-17 12:29:54
+ * @LastEditTime: 2020-11-19 09:52:48
  * @Description: 书籍购物车案例
       运用知识：v-for、v-model、v-bind、
       函数（map、reduce、filter、过滤器）
@@ -121,13 +121,15 @@
         },
 
         addBook() {
-          this.books.splice(this.books.length, 0, {
-            name: this.tmpBook.name,
-            date: this.tmpBook.date,
-            price: this.tmpBook.price,
-            count: this.tmpBook.count,
-            isSelect: this.tmpBook.isSelect,
-          });
+          // this.books.splice(this.books.length, 0, {
+          //   name: this.tmpBook.name,
+          //   date: this.tmpBook.date,
+          //   price: this.tmpBook.price,
+          //   count: this.tmpBook.count,
+          //   isSelect: this.tmpBook.isSelect,
+          // });
+          //使用json转换的方式来创建新的对象
+          this.books.splice(this.books.length, 0, JSON.parse(JSON.stringify(this.tmpBook)));
           //清空
           this.tmpBook.name = "";
           this.tmpBook.date = "";
