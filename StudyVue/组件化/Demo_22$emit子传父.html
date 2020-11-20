@@ -1,0 +1,83 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-18 15:36:34
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-19 08:29:09
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      {{count}}
+      <!--@下面写的函数这里接收
+        
+      1、应为发出去的也是事件所以也可以用@接收 
+      不写小括号是默认传event但是<cpn>标签是自己创建的没有
+      所以传的是子组件的event
+      
+    -->
+      <cpn @btlick="jieshou"></cpn>
+    </div>
+
+    <template id="cpn">
+      <div>
+        {{message}}
+        <button v-for="(item,index) in lidata" @click="add(item)">{{item.name}}</button>
+      </div>
+    </template>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    const cpn = {
+      template: "#cpn",
+      props: {
+        ccount: {
+          type: Number,
+          default: 0,
+          // required: true,
+        },
+      },
+      data() {
+        return {
+          lidata: [
+            { id: 1, name: "shuzhuang1" },
+            { id: 2, name: "shuzhuang2" },
+            { id: 3, name: "shuzhuang3" },
+          ],
+          message: "我是组件",
+        };
+      },
+      methods: {
+        add(item) {
+          //$emit:发射事件
+          //btlick:事件的名字
+          this.$emit("btlick", item);
+        },
+        dele() {},
+      },
+    };
+
+    let app = new Vue({
+      el: ".app",
+      data: {
+        count: 3,
+      },
+      methods: {
+        jieshou(event, ma) {
+          console.log(event, ma);
+        },
+      },
+      computed: {},
+      components: {
+        cpn,
+      },
+    });
+  </script>
+</html>
