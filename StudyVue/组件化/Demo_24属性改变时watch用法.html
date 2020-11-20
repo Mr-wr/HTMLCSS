@@ -1,0 +1,91 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-19 09:37:59
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-19 11:34:10
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- watch -->
+    <div class="app">
+      <h3>vuenum1:{{num1}}</h3>
+      <h3>vuenum2:{{num2}}</h3>
+      <cpn :cnumber1="num1" :cnumber2="num2" @num1="num1Change" @num2="num2Change" />
+    </div>
+
+    <template id="cpn">
+      <div>
+        <h3>cpndatenumber1:{{datenumber1}}</h3>
+        <h3>cpndatenumber2:{{datenumber2}}</h3>
+        cpndatenumber1:<input type="text" name="" id="" v-model="datenumber1" /> cpndatenumber2:<input
+          type="text"
+          name=""
+          id=""
+          v-model="datenumber2"
+        />
+      </div>
+    </template>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    const cpn = {
+      template: "#cpn",
+      props: {
+        cnumber1: {
+          type: Number,
+        },
+        cnumber2: {
+          type: Number,
+        },
+      },
+      data() {
+        return {
+          datenumber1: this.cnumber1,
+          datenumber2: this.cnumber2,
+        };
+      },
+      //使用watch这个来代替
+      watch: {
+        //名字必须和这个函数名一样
+        datenumber1() {
+          this.$emit("num1", this.datenumber1);
+          // ++this.datenumber2;
+        },
+        datenumber2() {
+          this.$emit("num2", this.datenumber2);
+          // ++this.datenumber1;
+        },
+      },
+    };
+
+    let app = new Vue({
+      el: ".app",
+      data: {
+        num1: 12,
+        num2: 13,
+      },
+      methods: {
+        num1Change(a) {
+          this.num1 = a;
+          this.num2++;
+        },
+        num2Change(a) {
+          this.num2 = a;
+          this.num1++;
+        },
+      },
+      computed: {},
+      components: {
+        cpn,
+      },
+    });
+  </script>
+</html>
