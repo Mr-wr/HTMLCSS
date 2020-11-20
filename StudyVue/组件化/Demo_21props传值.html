@@ -1,0 +1,72 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-17 16:06:37
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-17 17:02:09
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- 组件之间的通信
+    两种方式
+      1\父传子
+      2\子传父 -->
+      <cpn1 :cmessage="message" :ctest="testArray"></cpn1>
+    </div>
+    <template id="cpn">
+      <div>
+        <h1>{{cmessage}}</h1>
+        <ul>
+          <li v-for="item in ctest">{{item}}</li>
+        </ul>
+      </div>
+    </template>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    Vue.component("cpn1", {
+      template: "#cpn",
+      //1\第一中方式数组里面放参数命名自己的
+      // props: ["cmessage", "ctest"],
+      //2第二中方式用对象
+      props: {
+        cmessage: {
+          type: String,
+          default: "这是默认值",
+          //布尔值看是不是一定要传\true的话没有传会报错
+          required: true,
+        },
+        ctest: {
+          type: Array,
+          //2.5.17一下type是一个对象或者是数组时,默认值必须是一个函数
+          // default: [],
+          default() {
+            return [];
+          },
+          required: true,
+        },
+      },
+      data() {
+        return {};
+      },
+    });
+
+    let app = new Vue({
+      el: ".app",
+      data: {
+        message: "我是vue实例里面的参数",
+        testArray: ["我也vue实例里面的数组1", "我也vue实例里面的数组2", "我也vue实例里面的数组3"],
+      },
+      methods: {},
+      computed: {},
+    });
+  </script>
+</html>
