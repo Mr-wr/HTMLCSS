@@ -1,0 +1,85 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-19 16:28:31
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-20 08:58:28
+ * @Descripttion: 
+    1、$refs
+    2、$children(一般不用)
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- $children数组是根据这里有多少组件来的 -->
+      <cpn></cpn>
+      <!-- 问题：假如已经写好了代码但是又添加了子组件改变了
+          子组件的index下面获取children[index]就会错 -->
+      <cpn ref="cpn1"></cpn>
+      <cpn1></cpn1>
+      <!-- 有多少子组件都会放到$children数组里面根据索引来获取 -->
+      <button @click="btnClick">按钮</button>
+    </div>
+    <template id="cpn">
+      <div>我是子组件</div>
+    </template>
+    <template id="cpn1">
+      <div>我是子组件 <button @click="btnClick">我是子组件的btn</button></div>
+    </template>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: ".app",
+      data: {},
+      methods: {
+        btnClick() {
+          // 1、children
+          // console.log(this.$children); //返回VueComponent组件对象
+          // //获取子组件的函数
+          // this.$children[1].showMessage();
+          // //获取子组件的属性
+          // console.log(this.$children[0].cname);\
+
+          // 2、$refs默认是一个空的对象{}需要早组件上加上refs属性才可以用
+          // 例如： <cpn ref="cpn1"></cpn>
+          console.log(this.$refs.cpn1.cname);
+        },
+      },
+      computed: {},
+      components: {
+        cpn: {
+          template: "#cpn",
+          data() {
+            return { cname: "我是子组件的cname" };
+          },
+          methods: {
+            showMessage() {
+              console.log("我是showmessage函数");
+            },
+          },
+        },
+        cpn1: {
+          template: "#cpn1",
+          methods: {
+            showMessage1() {
+              console.log("我是showmessage1函数");
+            },
+            btnClick() {
+              // 获取根组件
+              console.log(this.$root); //返回vue对象
+              // 获取父组件
+              console.log(this.$parent); //返回Vue对象
+            },
+          },
+        },
+      },
+    });
+  </script>
+</html>
