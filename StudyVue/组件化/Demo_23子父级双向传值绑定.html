@@ -1,0 +1,78 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-19 09:31:57
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-19 10:25:29
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <h1>vue:{{count}}</h1>
+      <!-- 如果组件中间不需要加东西可以写成单独组件 -->
+      <!-- <cpn @chan="change" :prcount="count"/></cpn> -->
+
+      <cpn @chan="change" :prcount="count" />
+    </div>
+    <template id="cpn">
+      <div>
+        <h1>cpn:{{prcount}}</h1>
+        <!-- 1、利用@把参数传入父级从而修改父级的参数 -->
+        <!-- <input type="text" v-model="prcount" @input="change" /> -->
+        <!-- 2、尽量不用要修改props的参数，尽量让父级修改 -->
+        <!-- <input type="text" v-model="a" @input="change" /> -->
+        <!-- watch -->
+        <input type="text" v-model.Number="a" />
+      </div>
+    </template>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    const cpn = {
+      template: "#cpn",
+      props: {
+        prcount: {
+          type: Number,
+        },
+      },
+      data() {
+        return {
+          a: this.prcount,
+        };
+      },
+      methods: {
+        // change() {
+        //   this.$emit("chan", this.a);
+        // },
+      },
+      watch: {
+        a() {
+          this.$emit("chan", this.a);
+        },
+      },
+    };
+
+    let app = new Vue({
+      el: ".app",
+      data: {
+        count: 9,
+      },
+      methods: {
+        change(a) {
+          this.count = a;
+        },
+      },
+      computed: {},
+      components: {
+        cpn,
+      },
+    });
+  </script>
+</html>
