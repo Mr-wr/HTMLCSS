@@ -1,0 +1,64 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-20 09:02:12
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-20 09:35:23
+ * @Descripttion: slot 插槽、具名插槽
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- 
+        slot基本使用
+        1、如果又多个元素会一起替换slot
+       -->
+      <!-- <cpn><button>vue传入的元素</button></cpn> -->
+
+      <!-- 具名插槽
+        因为改一个会全部替换slot
+        1、在slot中添加属性name、然后在要替换的元素中添加属性slot指向
+        2、
+       -->
+      <cpn>
+        <h2 slot="right">right的被替换了</h2>
+        <h2 slot="left">左边的被替换了</h2>
+        <h2 slot="center">center的被替换了</h2>
+      </cpn>
+    </div>
+
+    <template id="cpn">
+      <div>
+        <h2>我时cpn组件</h2>
+        <!-- 预留空间 -->
+        <!-- <slot></slot> -->
+
+        <!-- 如果没有传元素就会显示默认的元素 -->
+        <slot name="left"><button>左边</button></slot>
+        <slot name="center"><button>中边</button></slot>
+        <slot name="right"><button>右边</button></slot>
+      </div>
+    </template>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    const cpn = {
+      template: "#cpn",
+    };
+    let app = new Vue({
+      el: ".app",
+      data: {},
+      methods: {},
+      computed: {},
+      components: {
+        cpn,
+      },
+    });
+  </script>
+</html>
