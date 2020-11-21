@@ -2,13 +2,14 @@
  * @Author: qi-you
  * @Date: 2020-11-11 06:50:59
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-12 10:53:59
+ * @LastEditTime: 2020-11-19 19:35:08
  * @Descripttion: 
  1、v-pre:就想显示{{message}}不使用Mustache语法
  2、v-html：当数据是html元素的时候
  3、v-once：绑定数据后不能改变只显示第一次的值
  4、v-cloak：如果js运行到一半就卡住了，
- 为什么要用v-cloak：用户的界面Mustache语法还没有被vue解析就会显示Mustache语法
+ 为什么要用v-cloak：用户的界面Mustache语法还没有被v
+ ue解析就会显示Mustache语法
  解决：配合css [v-cloak]{display：none}原因：在js运行vue完成之后就会把v-cloak属性去掉
 -->
 <!DOCTYPE html>
