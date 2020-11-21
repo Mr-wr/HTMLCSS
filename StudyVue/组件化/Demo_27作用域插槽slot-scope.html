@@ -1,0 +1,59 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-20 09:37:00
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-20 16:12:53
+ * @Descripttion: 作用域
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 父组件模板的所有东西都会在父级作用于内编译：
+        子组件模板的所有东西都会在子级作用域内编译 -->
+    <div class="app">
+      <!-- 作用域插槽：
+        父组件替换插槽的标签，但是内容有子组件来提供 -->
+      <cpn>
+        <!-- 在2.5.7一下要用template标签 -->
+        <div slot-scope="slot">
+          <span v-for="item in slot.data">{{item}}</span>
+          <span>{{slot.data.join(" - ")}}</span>
+        </div>
+      </cpn>
+    </div>
+    <template id="cpn">
+      <div>
+        <slot :data="lunguages">
+          <ul>
+            <li v-for="item in lunguages">{{item}}</li>
+          </ul>
+        </slot>
+      </div>
+    </template>
+  </body>
+  <script src="../vuejs/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: ".app",
+      data: {},
+      methods: {},
+      computed: {},
+      components: {
+        cpn: {
+          template: "#cpn",
+          data() {
+            return {
+              lunguages: ["a", "b", "c", "d", "e"],
+            };
+          },
+        },
+      },
+    });
+  </script>
+</html>
