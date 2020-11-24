@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-11-12 21:47:04
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-15 19:50:54
+ * @LastEditTime: 2020-11-22 16:32:30
  * @Descripttion: v-for
     对象是第一个参数
     索引第二个参数，
@@ -24,7 +24,9 @@
         <!--也可以有key -->
         <li v-for="(value,key) in info">{{key}}--{{value}}</li>
       </ul>
-      <!--尽量使用key  内部性能更高 -->
+      <!--尽量使用key  内部性能更高 （要和值一一对应）
+      原因：在vue的虚拟***中插入一个元素的话会修改要插入元素后面的每个数组的
+      加了key后就一一对应了就不会修改后面的元素而是再中创建-->
       <ul>
         <li v-for="item in letters" :key="item">{{item}}</li>
       </ul>
