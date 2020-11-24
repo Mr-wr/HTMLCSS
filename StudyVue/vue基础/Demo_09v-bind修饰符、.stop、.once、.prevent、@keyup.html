@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-11-12 08:33:28
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-12 11:27:10
+ * @LastEditTime: 2020-11-22 16:25:34
  * @Descripttion: 
  1、.stop 父子结构时点子结构父亲也有相应可以在子节点写上这个属性就之会触发子结构(目前还不懂)
  2、.noce 只能触发一次
@@ -38,6 +38,9 @@
       <!-- <input type="text" name="" id="" @keyup="keyup" /> -->
       <!-- @keyup.enter键盘回车 .once只会触发一次 -->
       <input type="text" @keyup.enter.once="enter" />
+
+      <!-- 建修饰、建代码就是键盘上的某个案件 -->
+      <input type="text" name="" id="" @keyup.13="onEnter" />
     </div>
   </body>
   <script src="../vuejs/vue.js"></script>
