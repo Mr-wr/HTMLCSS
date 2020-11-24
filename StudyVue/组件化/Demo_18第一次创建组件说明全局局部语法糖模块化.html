@@ -2,8 +2,13 @@
  * @Author: qi-you
  * @Date: 2020-11-16 21:58:26
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-17 09:01:17
- * @Descripttion: 
+ * @LastEditTime: 2020-11-22 17:11:12
+ * @Descripttion: 注册组件
+    1、调用Vue.extend()方法创建组件构造器
+    2、调用Vue.component()方法注册组件
+    3、在vue的实例范围使用
+    当我们通过调用Vue.component()注册组件时，组件的注册是全局的
+    这意味着该组件可以在任意Vue示例下使用。
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +23,12 @@
      只能在vue的实例范围内
   1、创建组件构造器对象
   2、全局\局部注册
-  3、使用组件 -->
+  3、使用组件 
+
+    创建组件构造器extend
+    注册组件
+    使用组件。
+    -->
 
     <!-- ES6``可以换行 -->
 
