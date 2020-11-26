@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/reset.css" />
+    <!-- <link rel="stylesheet" href="./css/reset.css" /> -->
     <style>
       * {
         margin: 0;
@@ -20,15 +20,31 @@
       ul li {
         width: 120px;
         float: left;
+        background-color: red;
       }
       ul li ul {
         display: none;
       }
 
-      .wrapper ul li:hover ul {
+      .wrapper ul li:hover > ul {
         display: block;
         width: 120px;
         height: 24px;
+      }
+      .three {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .three li {
+        background-color: yellow;
+        border-radius: 10px;
+      }
+      .two {
+        position: relative;
+      }
+      div > ul > li {
+        background-color: aqua;
       }
     </style>
   </head>
@@ -38,17 +54,47 @@
         <li>
           <a href="">首页</a>
           <ul>
-            <li><a href="">最新更细</a></li>
-            <li><a href="">下载排行</a></li>
-            <li><a href="">企业新闻</a></li>
+            <li class="two">
+              <a href="">最新更细</a>
+              <ul class="three">
+                <li>三级</li>
+              </ul>
+            </li>
+            <li class="two">
+              <a href="">下载排行</a>
+              <ul class="three">
+                <li>三级</li>
+              </ul>
+            </li>
+            <li class="two">
+              <a href="">企业新闻</a>
+              <ul class="three">
+                <li>三级</li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li>
           <a href="">企业新闻</a>
           <ul>
-            <li><a href="">企业动态</a></li>
-            <li><a href="">最新动态</a></li>
-            <li><a href="">动态</a></li>
+            <li>
+              <a href="">企业动态</a>
+              <ul class="three">
+                <li>三级</li>
+              </ul>
+            </li>
+            <li>
+              <a href="">最新动态</a>
+              <ul class="three">
+                <li>三级</li>
+              </ul>
+            </li>
+            <li>
+              <a href="">动态</a>
+              <ul class="three">
+                <li>三级</li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li>
@@ -85,6 +131,5 @@
         </li>
       </ul>
     </div>
-    <div class="border wh100"></div>
   </body>
 </html>
