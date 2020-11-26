@@ -1,0 +1,60 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-11-26 08:52:09
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-11-26 09:11:08
+ * @Descripttion: 
+      rowspan:行
+      colspan：列
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .biaoTou {
+        border-top: 20px #199fff solid; /*上边框宽度等于表格第一行行高*/
+        border-left: 80px #ff8838 solid; /*左边框宽度等于表格第一行第一格宽度*/
+      }
+      tr th:nth-child(1) {
+        background-color: #ff8838;
+      }
+      tr:nth-child(1) th {
+        background-color: #199fff;
+      }
+      /* #lineTd {
+        background: #fff
+          url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxsaW5lIHgxPSIwIiB5MT0iMCIgeDI9IjEwMCUiIHkyPSIxMDAlIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=)
+          no-repeat 100% center;
+      } */
+    </style>
+  </head>
+  <body>
+    <table border="1">
+      <tbody>
+        <tr>
+          <td>
+            <div class="biaoTou"></div>
+          </td>
+          <th>第1行第2列</th>
+          <th>第1行第3列</th>
+          <th>第1行第4列</th>
+        </tr>
+        <tr>
+          <th>第2行第1列</th>
+          <th>第2行第2列</th>
+          <th>第2行第3列</th>
+          <th>第2行第4列</th>
+        </tr>
+        <tr>
+          <th>第3行第1列</th>
+          <th>第3行第2列</th>
+          <th>第3行第3列</th>
+          <th>第3行第4列</th>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
