@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-11-11 17:06:46
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-15 18:20:38
+ * @LastEditTime: 2020-11-28 17:24:55
  * @Descripttion: 
  vue对象参数
  1、el：决定管理那个dom也可以通过get获取元素在传入元素
@@ -24,26 +24,32 @@
     <div class="body"></div>
   </body>
   <script>
-    //vue的生命周期new Vue
-    //组件会消失
+    // vue的生命周期new Vue
+    // 组件会消失
     // 周期太复杂
     const vm = new Vue({
       // el决定管理那个dom
       // el也可以传入元素
-      //   el:document.getElementById("id"),
+      // el:document.getElementById("id"),
       el: ".body",
       // 可以传对象也可以传函数
       data: {},
       // 函数
       methods: {},
       // 生命周期函数回调
-      //created一般是一些网络请求
+      // created一般是一些网络请求
+      // 组件创建出来之后就会调用这个函数
       created: function () {
         console.log("aag");
       },
+      // 组件创建完模板（template）挂载完之后会调用这个函数
       mounted: function () {
         console.log("test2");
       },
+      // 发生界面改变的时候
+      updatad(){
+
+      }
     });
   </script>
 </html>
