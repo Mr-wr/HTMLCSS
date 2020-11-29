@@ -2,6 +2,13 @@
 1、vue是JavaScript框架
 2、简化Dom操作
 3、响应式数据驱动
+3、所有的组件都继承vue的原型
+例如：
+  Vue.prototype.test = funciton(){
+    log.("test")
+  }
+  在Home.vue中就可以使用
+  this.test()
 
 语法：
 
@@ -15,7 +22,7 @@
 4、配置packagejson
 5、npm install
 --------------------------plugin(插件)
-html-webpack-plugin@3.2.0
+html-webpack-plugin@3.2.0----根据模板生成
 uglifyjs-webpack-plugin@1.1.1(压缩)
 webpack-dev-server@2.9.3(开发服务：尽量对应版本)
 devServer参数
@@ -69,14 +76,106 @@ createElement是一个函数
 ---------------------------------------修改cli3配置
 不管在哪个目录都可以运行
 vue ul
+.map文件作用：
+
+　　项目打包后，代码都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错。 
+有了map就可以像未加密的代码一样，准确的输出是哪一行哪一列有错。
+
+　　所以该文件如果项目不需要是可以去除掉
+
+Vue-cli3中配置：（https://cli.vuejs.org/zh/config/#productionsourcemap）
+
+　　vue.config.js文件
 
 -----------------------------------------路由router
+安装步骤：
+  1、导入路由对象、并且调用Vue.use安装
+  2、创建router实例、传入路由映射配置
+  3、在vue实例挂载创建的router实例
+使用步骤：
+  1、创建路由组件
+  2、配置映射关系
+  3、通过router-link、 router-view显示
+
+---------------router默认值
+path：""，redirect:"/home"
+
+---------------把后面的#去掉
+在实例中添加mode："history"
+
+
+---------------router-link
+不想显示a标签了
+link中有个属性tag=button
+
+不想有返回按钮-> <-
+属性replace
+
+active-class
+如果想自己更改class名可以去router实例里面link更改
+2、也可以在link添加属性active-class
+
+-------------通过代码修改router
+this.$router.replace
+this.$router.push
+注：这个thisrouter对象
+就是在文件router文件夹下的indexjs里new的对象
+
+
 什么是前端渲染-后端渲染
 前：
-
-
-
 后：在服务器就已经中就生成了html，html+css+java
+
+------------------url-hash
+直接修改location.hash虽然改变了url但是不会刷新请求
+
+--------history.pushState
+在浏览器中添加
+注：是一个入栈和出栈，只显示栈顶
+是一个栈，连续添加的时候会保存以前的添加的
+history.pushState({},""，"home")
+
+--------history.replaceState
+history.replaceState({},""，"home")替换
+
+--------history.go
+history.go(-1)返回上一个界面
+history.go(1) 前进
+
+---------------------------------------------动态路由
+
+this.$route对象室那个路由活跃this就是谁
+获取路由
+1、先配置路由路径
+path:"user/:userId"
+2、使用this.$route.params.userId获取
+
+----------------------------------------------路由懒加载
+buildjs文件越来越大时
+用户在获取js文件会变得更长
+原来的是有多少组件就加载多少组件
+现在用const Home = ()=>import()懒加载组件
+会生成0js、1js、2js、3js。。。。有多少组件就有多少一一对应
+
+
+-------------------------------------------嵌套路由
+
+举一反三自己想
+
+
+----------------------------路由导航
+动态修改标题title
+都是全局守卫
+全局守卫：只有又路由跳转的话都会跳转到这个位置
+路由守卫：在routes[]中配置
+组件守卫
+router.beforeEach((to,from,next)=>{
+  next();
+  document.title = to.matched[0].meta.title;
+})
+
+
+
 
 
 --------------------package-lock.json
