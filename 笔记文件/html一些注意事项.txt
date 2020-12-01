@@ -39,3 +39,8 @@
 ![Alt text](./vertical-align参数.png)
 ![Alt text](./vertical-align代码.png)
 ![Alt text](./vertical-align案例.png)
+
+
+### 单标签后面不显示图片
+> 使用但标签后面的元素不能使用
+> 因为后面的/的前面没有加空格
