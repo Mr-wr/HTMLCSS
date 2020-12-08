@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-11-12 22:14:45
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-22 16:34:29
+ * @LastEditTime: 2020-12-08 09:21:24
  * @Descripttion: 那些方法改变数组界面不会相应
     根据索引array[index]来删除或者添加修改界面不会有相应
     push()
@@ -12,6 +12,7 @@
     splice()
     sort()
     reverse()
+    Vue.set
     但是我只用splice
 -->
 <!DOCTYPE html>
@@ -57,14 +58,16 @@
           // this.letters.splice(2,4,2,3,4,5);\\11234511
 
           //替换
-          this.letters.splice(0, this.letters.length, 1, 2, 3, 4, 5, 6, 7);
+          // this.letters.splice(0, this.letters.length, 1, 2, 3, 4, 5, 6, 7);
 
           //删除
-          this.tmp.splice(0, 1);
+          // this.tmp.splice(0, 1);
           //6、sort排序
           //7、revers()反转
           //注意：通过索引值改变值的时候不会显示
-          this.letters[0] = "dsfa";
+          // this.letters[0] = "dsfa";
+          // 还有用这种
+          Vue.set(this.letters, 0, "000");
         },
         del() {
           this.letters.pop();
