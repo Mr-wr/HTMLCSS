@@ -16,7 +16,7 @@
 1、映射首先去本地局部的找webpack，直接在终端写是找全局的
 
 配置大致webpack
-1、创建目录
+1、创建目录aaaa
 2、配置webpackconfigjs
 3、npm init（初始化项目）
 4、配置packagejson
@@ -37,9 +37,9 @@ selenium
 v8引擎(直接js转字节码)
 --------------------------------------------------------------vueCli2
 ----------------------------runtime-only和runtime-compiler 区别
----------------步骤
+---------------Vue程序运行步骤
 compiler
-template-》ast（解析树）-》 render 函数-》 vdom -> ul
+template（模板）-》ast（解析树）-》 render 函数（通过render创建vdom）-》 vdom -> ul
 
 only性能更高、代码量少
 render -> vdom -> ul
@@ -69,9 +69,11 @@ createElement是一个函数
 第三个参数：是标签的内容（疯狂套娃）
 
 ---------------------------------------vuecli3
-
+在终端构建的时候要不要显示提示信息
+Vue.config.productionTip = false
 如果想取消选择默认的话
 用户\.vuerc里删除
+每次点击别的界面时候都会创建新的组件
 
 ---------------------------------------修改cli3配置
 不管在哪个目录都可以运行
@@ -164,15 +166,403 @@ buildjs文件越来越大时
 
 
 ----------------------------路由导航
+当路由发生变话（导航发生改变）
 动态修改标题title
+//  前置守卫beforeEach（guard）
+router.beforeEach((to,from,next)=>{
+  next();// 一定要有也可以不用在第一行
+  // next参数false中断当
+  // ‘/’跳转知道路径
+  // 空默认的路径
+  document.title = to.matched[0].meta.title;
+})
+后置守卫afterEach
+router.beforeEach((to,from)=>{
+  // 不需要next因为已经跳转过去了
+})
 都是全局守卫
 全局守卫：只有又路由跳转的话都会跳转到这个位置
 路由守卫：在routes[]中配置
-组件守卫
-router.beforeEach((to,from,next)=>{
-  next();
-  document.title = to.matched[0].meta.title;
+组件守卫：
+
+
+--------------------------组件内部状态保留keep-alive
+保留原来组件的状态
+只有使用了keep-alive才会有
+activated
+deactivated
+属性：
+include：匹配的才会缓存
+exclude：选择不缓存的
+
+
+------------------------------路径起别名
+去build配置哪里修改
+
+
+------------------------------------Promise
+new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // 只要成功调用这个
+        // resolve("1");
+        // 不成功调用这个
+        reject("error message");
+      }, 1000);
+      // 步骤一
+    }).then((data) => {
+        console.log(data, "aniho");
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("2");
+          }, 1000);
+          // 步骤二
+        }).then((data) => {
+          console.log(data, "ads");
+        });
+        // 错误
+      }).catch((err) => {
+        console.log(err);
+      });
+也可以这样写
+new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // 只要成功调用这个
+        // resolve("1");
+        // 不成功调用这个
+        reject("error message");
+      }, 1000);
+    }).then((data) => {
+        console.log(data, "aniho");
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("2");
+          }, 1000);
+        }).then((data) => {
+          console.log(data, "ads");
+        });
+      },(err) => {
+        console.log(err);
+      }
+    );
+
+只是需要优化代码不需要异步操作的时候
+-----------------------------------------
+new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("1");
+      }, 1000);
+      if (1 > 0) {
+        reject("1>0");
+      }
+    })
+      .then(
+        (data) => {
+          data += "1";
+          console.log(data, "第一成");
+          // 简写当不需要异步请求的时候可以直接return data
+          // 底层也会调用new Promise
+          return data;
+        },
+        // 如果这里写上只是捕获第一层的第二成也会运行
+        (err) => {
+          console.log(err,"这个是第一成");
+        }
+      )
+      .then((data) => {
+        data += "2";
+        console.log(data, "第二层");
+        return data;
+      })
+      .then((data) => {
+        data += "3";
+        console.log(data, "第三成");
+      })
+      .catch((err) => {
+        console.log(err, "这个是最后一成");
+      });
+
+--------------------多个异步请求
+两个请求需要俩个请求都完成之后在进行操作可以这样：
+ // 如果有两个请求的话
+    Promise.all([
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("第一个请求");
+        }, 1000);
+      }),
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("第二个请求");
+        }, 1000);
+      }),
+    ]).then((results) => {
+      console.log("这是第一个请求的结果", results[0]);
+      console.log("这是第二个请求的结果", results[1]);
+    });
+
+
+
+
+-------------------------------------------------------------------------vuex
+状态管理
+当有多个界面需要用到变量后那么这个变量就应该放在里面
+
+不要再界面直接更改vuex数据，因为出错的时候不知道谁改动的
+
+修改state中的数据最好通过mutations中修改
+
+
+
+
+ vue components =》 actions（异步的时候（有网络请求）） =》 mutation
+
+
+---------------------------------mutation
+两种提交风格
+1、
+有一个对应默认参数state、也可以在app方法中传入参数
+例如：在app.methodes中
+add(count){this.$store.commit("add",count)}
+只要有参数就会对应state
+在vuex的实例mutation中定义方法
+然后再app this.$store.commit("方法名")
+
+2、特殊使用参数查询type
+在app中：
+this.$store.commit({
+  type:"方法名",
+  conunt
 })
+store中mutations
+payload:
+function(state,payload){state.count+=payload.count}
+-----------------------------------getters
+有两个默认对应参数state、getters
+是一个类似于计算属性的方法
+在app中：
+this.$store.getters.funciton
+
+当app中需要传入参数时需要返回一个函数来接收参数
+例如：getAge(state){
+  return age=>{
+    state.student.age+=age;
+  }
+}
+------------------------------vuex响应式原理
+如果在store中初始化好了，在通过事件添加属性，
+这个属性并不会添加响应式系统里面
+（虽然把属性添加进去了，但是界面不会显示）
+意思就是：vuex响应式只会显示相应初始化的属性
+
+每个属性对应一个dep
+1、他会监听这个属性的变化，
+2、他会在看一下有那些界面要的数据要刷新
+student{
+  name:"name",=> dep =>[watcher]
+  age:18
+}
+
+
+解决方法：
+使用响应式的修改方法
+使用
+Vue.set([数组/对象],[类型String是对象/类型number是数组],[值])
+Vue.delete([数组/对象],[值])
+
+-------------------vuex常量思想
+在app中调用store的方法需要用字符串"方法名"
+例如：this.$store.commit("方法名")
+不提倡用字符串来使用方法
+
+在store中
+方法可以使用["方法名"](){}
+
+1、所有可以单独一个文件写入方法名字
+mutation-type.js
+2、然后在文件中调用
+
+
+--------------------vuex中异步actions
+
+
+--------对象的解构
+const object = {
+  name: "ni",
+  age: 15,
+  aheight: 18,
+};
+// 获取单独的数据
+const { name, age } = object;
+console.log(name, age);
+
+// 传入对象
+const testdata = {
+  url: "http://123.207.32.32:8000/home/data",
+  // type: "pop",
+  // page: 1,
+};
+const testa = ({ url, type, page }) => {
+  console.log("类型",type, page);
+  return axios({
+    url,
+    params: {
+      type,
+      page,
+    },
+  });
+};
+testa(testdata).then((res) => {
+  console.log("我是新型用法", res);
+});
+
+
+
+如果在mutatino中使用异步操作的话会在浏览器中不显示过程
+
+2、在store actions中定义
+利用promise
+ // 请求
+  actions: {
+    // context上下文
+    // 也可以用{state,getters}
+    // aAdd({state,getters},payload)
+    aAdd(context, payload) {
+      // 
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log("------------vuex中-------------");
+          console.log("我是请求");
+          console.log("我是context", context.state.count);
+          console.log("我是传过来的参数", payload);
+          resolve("我是请求到的数据");
+        }, 1000);
+      });
+    }
+  },
+
+
+1、在app中调用dispatch
+this.$store.dispatch{type:"方法名字",name:2})
+
+aAdd(paramet) {
+      this.$store
+        .dispatch({
+          type: "aAdd",
+          paramet,
+        })
+        .then((data) => {
+          console.log("----------app中-----------");
+          console.log("我是请求来的数据", data);
+        });
+    },
+
+
+-----------------------modules
+原因：如果有很多状态放在同一个module中会很臃肿
+
+在store中：
+会先调用root的mutations中的方法
+const modulesA = {
+  state: {
+    letter: ["a", "b", "c"]
+  },
+  mutations: {
+    // root是调用父级的state
+    mA(state,payload,rootState) {
+      state.letter.splice(state.letter.length, 1, "d");
+    }
+  }
+};
+const store = Vue.store({
+modules:{
+  modulesA
+}
+});
+
+
+在app中：
+显示
+<h1>{{this.$store.state.modulesA.letter}}</h1>
+// 方法调用
+addItem(){
+  this.$store.commit({
+    tpye:"mA",
+  })
+}
+
+--------------------------------vuex文件抽取
+
+把文件中mutations单独抽出一个文件
+
+
+--------------------------------------------------------------axios
+
+---------------基本使用过程
+// 默认get
+axios({
+  url: "http://123.207.32.32:8000/home/data",
+  // 还可以拼接参数（系统会默认加上去）
+  params: {
+    type: "pop",
+    page: 1,
+  },
+}).then((res) => {
+  console.log(res);
+});
+
+
+---------------多个请求
+axios
+  .all([
+    axios({
+      url: "http://123.207.32.32:8000/home/data",
+      // 还可以拼接参数（系统会默认加上去）
+      params: {
+        type: "pop",
+        page: 1,
+      },
+    }),
+    axios({
+      url: "http://123.207.32.32:8000/home/multidata",
+      method: "get",
+    }),
+  ])
+  .then((reslets) => {
+    console.log(reslets);
+  });
+
+-----------axios全局配置
+axios.defaults.baseURL=""
+
+method:"get"对应的是params
+method:"post:对应的是data
+
+
+----------axios实例和模块封装
+
+为什么要封装
+因为当axios不在维护的时候
+个个vue模块的axios都要一个一个去替换：太麻烦
+1、创建实例
+const axiosHomeInstance = axios.create({
+  baseURL:"http://123.207.32.32:8000",
+  timeout:5000
+})
+2、调用
+
+所以统一封装到一个文件中然后再调用
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -189,6 +579,10 @@ router.beforeEach((to,from,next)=>{
 创建vue的时候会看对象里有没有el有的话会执行$mount
 
 
+
+
+--------------------------------------------------------小项目
+tab-bar
 
 
 
