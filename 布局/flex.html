@@ -1,0 +1,84 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-12-01 10:29:49
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-12-15 10:33:55
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .border {
+        border: 1px solid black;
+      }
+      .wh100 {
+        width: 350px;
+        height: 100px;
+      }
+      .box {
+        /* 父元素常见属性 */
+        display: flex;
+        flex-direction: row;
+        background-size: 100% 100%;
+        width: 800px;
+        height: 400px;
+        /* justify-content: center; */
+        /* 设置侧轴居中 */
+        /* align-items: center; */
+
+        /* 设置换行 */
+        flex-wrap: wrap;
+        /* item中间是均等的item最右边加item最左边等于item中间的距离 */
+        justify-content: space-around;
+        /* 设置多行(只有换行才可以) */
+        /* align-content: flex-start; */
+
+        /* 两个简写 */
+        /* flex-direction: column;
+        // 换行
+        flex-wrap: wrap; */
+        /* flex-flow: wrap column; */
+
+        /* 根据剩余的空间flex:1 */
+
+        /* visibility: hidden; */
+        overflow: auto;
+
+        /* 单独设置布局 */
+        /* align-self: flex-end; */
+      }
+      .box div {
+        /* margin: 10px; */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- float、clear、vertical-align失效 -->
+    <!-- 
+    元素跟着主轴来排列的
+    flex-direction设置主轴默认row左到右
+    -->
+    <!-- 默认不换行会如果超出了就会变小宽度  -->
+    <div class="box border">
+      <div class="border wh100">1</div>
+      <div class="border wh100">2</div>
+      <div class="border wh100">3</div>
+      <div class="border wh100">4</div>
+      <div class="border wh100">5</div>
+      <div class="border wh100">6</div>
+      <div class="border wh100">7</div>
+      <div class="border wh100">8</div>
+      <div class="border wh100">5</div>
+      <div class="border wh100">6</div>
+      <div class="border wh100">7</div>
+      <div class="border wh100">8</div>
+      <!-- <div class="border wh100">7</div>
+      <div class="border wh100">8</div> -->
+      <!-- <button>niaho</button> -->
+    </div>
+  </body>
+</html>

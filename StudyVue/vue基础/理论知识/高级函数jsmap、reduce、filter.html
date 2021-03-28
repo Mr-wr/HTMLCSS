@@ -27,16 +27,33 @@
     console.log(sum); //[1, 1, 1];
 
     //map也是返回一个数组
-    let totalNumber = numberArray.map(
+    // 如果数组中的是对象
+    let arrayObj = [
+      { name: "test", set: 1, test: "tes" },
+      { name: "test2", set: 2, test: "tes" },
+      { name: "test3", set: 3, test: "tes" },
+    ];
+    let totalNumber = arrayObj.map(
+      //
       //不断循环对数组的每个元素进行操作
-      n => n + 2
+      n => {
+        return n.name, n.set;
+      }
     );
-    console.log(totalNumber); //[3,2,3,3]
+    console.log("如果数组中的是对象", totalNumber); //[3,2,3,3]
 
-    //reduce不是返回一个数组
-    let tmp = numberArray.reduce(
+    //reduce返回的是里面赋值的元素
+    let testarray = [];
+    let tmp = arrayObj.reduce(
       //不断循环每个值相加后结果
-      (sum, n) => sum + n,
+      (testarray, n) =>
+        // 也可以是赋值操作
+        // if(n==2)sum=1,
+        // 相加
+        // sum + n,
+        // 获取部分对象
+      //  { conset {name,test} = n;
+      //  return  testarray.push();},
       // sum初始值
       0
     );

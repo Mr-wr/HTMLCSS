@@ -1,0 +1,189 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-12-06 11:11:53
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-12-06 13:23:25
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        /* height: 100%; */
+      }
+      #scrollWrap1 {
+        /* height: 100%; */
+        border: 1px solid black;
+        height: 300px;
+        /* overflow: auto; */
+        overflow: scroll;
+      }
+      .red {
+        height: 20px;
+        width: 100px;
+        color: red;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scrollWrap1">
+      <div id="scrollTop">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p id="p">正在刷新</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    var wrapTop = document.getElementById("scrollWrap1");
+    var p = document.getElementById("p");
+    // 获取滚动条当前的位置
+    function getScrollTop(element) {
+      var scrollTop = 0;
+      if (element && element.scrollTop) {
+        scrollTop = element.scrollTop;
+      } else if (element) {
+        scrollTop = element.scrollTop;
+      }
+      return scrollTop;
+    }
+    // 获取当前可视范围的高度
+    function getClientHeight(element) {
+      var clientHeight = 0;
+      if (element.clientHeight && element.clientHeight) {
+        clientHeight = Math.min(element.clientHeight, element.clientHeight);
+      } else {
+        clientHeight = Math.max(element.clientHeight, element.clientHeight);
+      }
+
+      return clientHeight;
+    }
+    // 获取文档完整的高度
+    function getScrollHeight(element) {
+      return Math.max(element.scrollHeight, element.scrollHeight);
+    }
+    // 滚动事件触发;
+    function pullDown(element, funt) {
+      element.onscroll = function () {
+        if (getScrollTop(element) + getClientHeight(element) == getScrollHeight(element)) {
+          console.log("下拉刷新了");
+          setTimeout(() => {
+            p.classList.add("red");
+          }, 1000);
+          //此处发起AJAX请求
+        }
+      };
+    }
+    pullDown(wrapTop);
+    // tips：如果想距离底部50px就执行刷新，
+    // 请将if条件改为getScrollTop() + getClientHeight()+50> getScrollHeight()即可实现
+    var currIndex = 0;
+
+    console.log(wrapTop.scrollTop + " " + "滚动条当前的位置");
+    console.log(wrapTop.scrollHeight + " " + "获取滚动条的高度");
+  </script>
+</html>

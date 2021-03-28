@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-11-18 15:36:34
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-19 08:29:09
+ * @LastEditTime: 2020-12-12 23:12:23
  * @Descripttion: 
 -->
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
     <template id="cpn">
       <div>
         {{message}}
-        <button v-for="(item,index) in lidata" @click="add(item)">{{item.name}}</button>
+        <button v-for="(item,index) in lidata" @click="add">{{item.name}}</button>
       </div>
     </template>
   </body>
@@ -55,10 +55,10 @@
         };
       },
       methods: {
-        add(item) {
+        add(even) {
           //$emit:发射事件
           //btlick:事件的名字
-          this.$emit("btlick", item);
+          this.$emit("btlick",even,"niaho");
         },
         dele() {},
       },

@@ -39,9 +39,10 @@
       <h2 v-html="a"></h2>
 
       <!-- v-pre
-      如果就是想显示{{message}}的话
-    就可以在标签上和v-once写法一样写上 -->
+        如果就是想显示{{message}}的话
+        就可以在标签上和v-once写法一样写上 -->
 
+      <h2 v-pre>{{message}}</h2>
       <!-- v-cloak
         为什么需要这个呢：
       因为在浏览器时从上往下解析的
@@ -53,7 +54,8 @@
       例如：[v-cloak]:{display:none}
       注：当vue解析之后，会去除v-cloak
      -->
-      <h2 v-pre>{{message}}</h2>
+
+      <h2 v-cloak>这是测试v-cloak</h2>
     </div>
     <script src="../vuejs/vue.js"></script>
     <script>
@@ -66,6 +68,7 @@
           array: ["niaho", "zaijian", "busong"],
           counter: 2,
         },
+        create() {},
         methods: {},
       });
     </script>

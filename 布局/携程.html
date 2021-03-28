@@ -1,0 +1,61 @@
+<!--
+ * @Author: qi-you
+ * @Date: 2020-12-05 23:39:22
+ * @LastEditors: qi-you
+ * @LastEditTime: 2020-12-06 11:03:48
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./base.css" /> -->
+    <style>
+      /* 移动端配置 */
+      body {
+        max-width: 540px;
+        min-width: 280px;
+        margin: 0 auto;
+        color: #000;
+        /* font: normal 14px/1.5 Tahoma; */
+        background: #f2f2f2;
+        /* 不会出现水平拉条 */
+        overflow-x: hidden;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .border {
+        border: 1px solid black;
+      }
+      
+      /* 搜索模块 */
+      .search-index {
+        display: flex;
+        /* 固定定位一屏幕为主和父级没有关系 */
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        min-width: 280px;
+        max-width: 540px;
+        height: 44px;
+        background-color: #fff;
+      }
+      .search{
+        flex:1;
+      }
+      .user{
+        width: 44px;
+        height: 44px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search-index ">
+      <div class="search border"></div>
+      <a href="" class="user border">我的</a>
+    </div>
+  </body>
+</html>

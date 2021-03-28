@@ -2,7 +2,7 @@
  * @Author: qi-you
  * @Date: 2020-11-13 09:06:37
  * @LastEditors: qi-you
- * @LastEditTime: 2020-11-19 09:52:48
+ * @LastEditTime: 2021-01-16 10:44:38
  * @Description: 书籍购物车案例
       运用知识：v-for、v-model、v-bind、
       函数（map、reduce、filter、过滤器）
@@ -165,12 +165,12 @@
         },
 
         selectBooks() {
-          let books = this.books.filter((n) => n.isSelect);
-          return books.map((n) => n.name);
+          let books = this.books.filter(n => n.isSelect);
+          return books.map(n => n.name);
         },
         totalBooks() {
           // return this.books.filter((n) => n.isSelect).length;
-          return this.books.filter((n) => n.isSelect).reduce((sum, book) => sum + book.count, 0);
+          return this.books.filter(n => n.isSelect).reduce((sum, book) => sum + book.count, 0);
         },
       },
     });

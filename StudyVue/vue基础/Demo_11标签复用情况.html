@@ -24,7 +24,7 @@
              会使用同一个标签只是把不同的变量修改一下
              2、这是因为Vue在进行DOM渲染时，出于性能考虑，会尽可能的复用已经存在的元素，而不是重新创建新的元素
         解决方法：标签内有一个key只要时不同的值就可以了 -->
-        用户名：<input type="text" key="user" />
+        用户名：<input type="text"  key="user"/>
       </span>
       <span v-else>邮箱：<input type="text" key="email" /></span>
       <button @click="isemail = !isemail">切换</button>

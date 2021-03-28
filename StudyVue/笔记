@@ -25,7 +25,7 @@
 html-webpack-plugin@3.2.0----根据模板生成
 uglifyjs-webpack-plugin@1.1.1(压缩)
 webpack-dev-server@2.9.3(开发服务：尽量对应版本)
-devServer参数
+devServer参数?怎么设置
 contentBase：为那个文件提供服务
 port：端口号
 inline：页面刷新
@@ -37,7 +37,7 @@ selenium
 v8引擎(直接js转字节码)
 --------------------------------------------------------------vueCli2
 ----------------------------runtime-only和runtime-compiler 区别
----------------Vue程序运行步骤
+---------------Vue程序运行步骤--------------------------------------------------c
 compiler
 template（模板）-》ast（解析树）-》 render 函数（通过render创建vdom）-》 vdom -> ul
 
@@ -60,7 +60,7 @@ Eslint(限制)
 文件格式
 -------eslintignore
 忽略格式文件
------------------------render
+-----------------------render-------------------------------c
 render(createElement)
 createElement是一个函数
 第一个参数：标签
@@ -78,7 +78,7 @@ Vue.config.productionTip = false
 ---------------------------------------修改cli3配置
 不管在哪个目录都可以运行
 vue ul
-.map文件作用：
+js中的.map文件作用：
 
 　　项目打包后，代码都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错。 
 有了map就可以像未加密的代码一样，准确的输出是哪一行哪一列有错。
@@ -146,8 +146,8 @@ history.go(1) 前进
 
 ---------------------------------------------动态路由
 
-this.$route对象室那个路由活跃this就是谁
-获取路由
+this.$route对象是那个路由活跃this就是谁
+获取路由中的信息
 1、先配置路由路径
 path:"user/:userId"
 2、使用this.$route.params.userId获取
@@ -198,9 +198,24 @@ exclude：选择不缓存的
 
 ------------------------------路径起别名
 去build配置哪里修改
+module.exports = {
+  publicPath: "./",
+  configureWebpack: {
+    resolve: {
+      alias: {
+        common: "@/components/common",
+        content: "@/components/content",
+        assets: "@/assets",
+        views: "@/views",
+        network: "@/network",
+        img: "assets/img",
+        css: "assets/css",
+      },
+    },
+  },
+};
 
-
-------------------------------------Promise
+------------------------------------Promise------------------------c
 new Promise((resolve, reject) => {
       setTimeout(() => {
         // 只要成功调用这个
@@ -318,6 +333,7 @@ new Promise((resolve, reject) => {
 
 
 ---------------------------------mutation
+类似于methods
 两种提交风格
 1、
 有一个对应默认参数state、也可以在app方法中传入参数
@@ -336,6 +352,10 @@ this.$store.commit({
 store中mutations
 payload:
 function(state,payload){state.count+=payload.count}
+
+
+3、调用自身方法
+使用this.commit("方法名字")
 -----------------------------------getters
 有两个默认对应参数state、getters
 是一个类似于计算属性的方法
@@ -348,6 +368,11 @@ this.$store.getters.funciton
     state.student.age+=age;
   }
 }
+也可以调用自身的getters方法
+
+
+
+
 ------------------------------vuex响应式原理
 如果在store中初始化好了，在通过事件添加属性，
 这个属性并不会添加响应式系统里面
@@ -441,7 +466,7 @@ testa(testdata).then((res) => {
   },
 
 
-1、在app中调用dispatch
+1、在app中调用actions 使用dispatch
 this.$store.dispatch{type:"方法名字",name:2})
 
 aAdd(paramet) {
@@ -549,11 +574,36 @@ const axiosHomeInstance = axios.create({
   timeout:5000
 })
 2、调用
-
+axiosHomeInstance({url:"/home/multidata"}).then(res=>{console.log(res)})
 所以统一封装到一个文件中然后再调用
 
+-----------------------------------------------拦截器
+4种写法
+请求成功、失败
+响应成功、失败
+
+为什么要拦截
+1、有时候发送请求的时候想自己携带某些信息
+2、发送请求的时候想显示某些动画
+3、某些网络请求（需要登入（token）），必须携带一些特殊信息，
+如果没有携带就让他先携带再登入网站
 
 
+// 基础写法
+1、请求
+instance.interceptors.request.use(
+  // 请求成功拦截
+  config => {
+    console.log(config);
+    // 如果不返回出去的话请求会报错
+    return config;
+  },
+  // 请求失败拦截
+  err => {
+    console.log(err);
+  }
+
+2、响应
 
 
 
@@ -584,7 +634,7 @@ const axiosHomeInstance = axios.create({
 --------------------------------------------------------小项目
 tab-bar
 
-
+商城
 
 
 
